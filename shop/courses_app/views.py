@@ -8,4 +8,13 @@ def course_list(request):
 
 def course_detail(request, id):
     course = Course.objects.get(id=id)
+    course.views += 1
+
+    if course.situation :
+        course.situation = False
+    else :
+        course.situation = True
+        
+    course.save()
+
     return render(request, "courses_app/course_detail.html", context={'course': course})
