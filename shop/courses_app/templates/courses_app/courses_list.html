@@ -19,20 +19,22 @@
                     <th scope="col">Discription</th>
                     <th scope="col">Situation</th>
                     <th scope="col">Views</th>
+                    <th scope="col">Id</th>
                 </tr>
             </thead>
             <tbody>
                 {% for course in courses %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ course.title }}</th>
-                    <td>{{ course.discription }}</th>
+                    <td><a href="/course/detail/{{ course.id }}">{{ course.title }}</td></a>
+                    <td>{{ course.discription }}</td>
                     {% if course.situation %}
                         <td>Active</td>
                     {% else %}
                         <td>InActive</td>
                     {% endif %}
                     <td>{{ course.views }}</td>
+                    <td>{{ course.id }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
