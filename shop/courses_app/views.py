@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from courses_app.models import Course
 
 def course_list(request):
@@ -27,10 +27,10 @@ def add_course(request):
             # new_course = Course(title=Title, description=Description)
             # new_course.save()
             Course.objects.create(title=Title, description=Description)
-            
+            return redirect('/course/list')
 
             # Optionally, add a success message or reset the form
-            return render(request, 'courses_app/add_course.html', {
-                'message': 'Course added successfully',
-            })
+            # return render(request, 'courses_app/add_course.html', {
+            #     'message': 'Course added successfully',
+            # })
         return render(request, 'courses_app/add_course.html')
