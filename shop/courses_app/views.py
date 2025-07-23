@@ -33,4 +33,11 @@ def add_course(request):
             # return render(request, 'courses_app/add_course.html', {
             #     'message': 'Course added successfully',
             # })
-        return render(request, 'courses_app/add_course.html')
+
+    if request.method == 'POST':
+        Title = request.POST.get('title')
+        Description = request.POST.get('description')
+        if Title and Description:
+            Course.objects.create(title=Title, description=Description)
+            return redirect('/course/list')    
+    return render(request, 'courses_app/add_course.html')

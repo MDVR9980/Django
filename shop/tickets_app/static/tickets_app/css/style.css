@@ -1,0 +1,95 @@
+/* Set the background color and font for the entire body */
+body {
+  background-color: #f8f9fa; /* Light gray background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
+}
+
+/* Style for large and eye-catching main heading */
+h1 {
+  font-weight: bold; /* Make the font bold */
+  letter-spacing: 2px; /* Space between letters for better readability */
+  color: #343a40; /* Dark gray color for the heading */
+}
+
+/* Custom styles for the card container */
+.card-custom {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Shadow for depth effect */
+  border-radius: 15px; /* Rounded corners for a smooth look */
+  padding: 30px; /* Inside padding for content spacing */
+  margin-top: 50px; /* Margin on top to separate from elements above */
+  background-color: #ffffff; /* White background inside the card */
+}
+
+/* Style for form control inputs */
+.form-control {
+  border-radius: 8px; /* Slightly rounded edges for inputs */
+  border: 1px solid #ced4da; /* Light gray border */
+  padding: 12px; /* Padding inside inputs for comfortable input area */
+  font-size: 1rem; /* Font size for readability */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition on focus */
+}
+
+/* Style when input fields are focused */
+.form-control:focus {
+  border-color: #80bdff; /* Change border color to blue on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Light blue glow around input when focused */
+  outline: none; /* Remove default outline to apply custom focus style */
+}
+
+/* Custom styles for the send button */
+.btn-custom {
+  padding: 14px 30px; /* Larger padding for easier clicking */
+  font-size: 1.2rem; /* Slightly bigger font for emphasis */
+  border-radius: 8px; /* Rounded corners for buttons */
+  transition: background-color 0.3s ease, transform 0.2s; /* Smooth hover effects */
+}
+
+/* Specific styles for success button - green background */
+.btn-success {
+  background-color: #28a745; /* Bootstrap success green */
+  border: none; /* Remove border for a cleaner look */
+}
+
+/* Hover effect for the success button */
+.btn-success:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: scale(1.02); /* Slightly enlarge button on hover for feedback */
+}
+
+/* Style for block-level buttons (full width) */
+.btn-block {
+  display: block; /* Make the button take the full width */
+  width: 100%; /* Full width for responsiveness */
+  margin-top: 10px; /* Margin on top */
+  margin-bottom: 10px; /* Margin at the bottom */
+}
+
+/* Stylish header title inside the form container */
+.header-title {
+  font-size: 2.5rem; /* Large font size for main headers */
+  margin-bottom: 20px; /* Space below the header */
+  color: #212529; /* Dark shade for readability */
+}
+
+/* Base styles for btn-custom */
+.btn-custom {
+  color: #fff; /* White text color */
+  background-color: #007bff; /* Bright green background color from Bootstrap */
+  border-color: #007bff; /* Same green border for consistency */
+}
+
+/* Hover state: when mouse hovers over the button */
+.btn-custom:hover {
+  color: #fff; /* Keep text white on hover */
+  background-color: #0069d9; /* Darker shade of green for hover effect */
+  border-color: #0062cc; /* Slightly darker border for hover */
+}
+
+/* Active and focus states: when button is clicked or focused */
+.btn-custom:active,
+.btn-custom:focus {
+  color: #fff; /* Keep text white */
+  background-color: #0062cc; /* Same darker green as hover */
+  border-color: #005cbf; /* Darker border on active/focus state */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Add a subtle shadow for emphasis */
+}

@@ -20,4 +20,13 @@ def add_ticket(request):
             # return render(request, 'tickets_app/add_ticket.html', {
             #     'message': 'Ticket added successfully',
             # })
-        return render(request, 'tickets_app/add_ticket.html')    
+
+    if request.method == 'POST':
+        Title = request.POST.get('title')
+        Body = request.POST.get('body')
+
+        if Title and Body:
+            Ticket.objects.create(title=Title, body=Body)
+
+
+    return render(request, 'tickets_app/add_ticket.html')    

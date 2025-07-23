@@ -1,58 +1,106 @@
+{% load static %}
 <!DOCTYPE html>
-<html Lang="en">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name=viewport content="width=device-width, intial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Bootstrap CSS for styling -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+
+<!-- Custom CSS for enhancements -->
+<link rel="stylesheet" href="{% static 'courses_app/css/style.css' %}" />
+
+<title>Courses List</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Courses List</h1>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Situation</th>
-                    <th scope="col">Views</th>
-                    <th scope="col">Id</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for course in courses %}
-                <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td><a href="/course/detail/{{ course.id }}">{{ course.title }}</td></a>
-                    <td>{{ course.description }}</td>
-                    {% if course.situation %}
-                        <td>
-                            <span class="badge bg-success">Active</span>
-                        </td>
-                    {% else %}
-                        <td>
-                            <span class="badge bg-danger">InActive</span>    
-                        </td>
-                    {% endif %}
-                    <td>
-                    {% if course.views >= 1000 %}
-                        <span class="badge bg-success">{{ course.views }}</span>
-                    {% elif course.views >= 500 %}
-                        <span class="badge bg-secondary">{{ course.views }}</span>
-                    {% elif course.views >= 50 %}
-                        <span class="badge bg-warning">{{ course.views }}</span>
-                    {% else %}
-                        <span class="badge bg-danger">{{ course.views }}</span>
-                    {% endif %}
-                    </td>
-                    <td>{{ course.id }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+<!-- Main container with padding and background -->
+<div class="container my-5">
+  <div>
+    <a href="/" class="btn btn-custom btn-lg">Home</a>
+  </div>
+  
+  <!-- Page Header -->
+  <h1 class="text-center mb-4 header-title">Courses List</h1>
+
+  <!-- Responsive table with hover and striped effects -->
+  <div class="table-responsive">
+    <table class="table table-hover table-striped align-middle shadow-sm rounded">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Situation</th>
+          <th scope="col">Views</th>
+          <th scope="col">Id</th>
+          <th scope="col">Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in courses %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          
+          <!-- Course title as a link with hover effect -->
+          <td>
+            <a href="/course/detail/{{ course.id }}" class="text-decoration-none link-primary course-title-hover">{{ course.title }}</a>
+          </td>
+          
+          <!-- Description with text truncation for long descriptions -->
+          <td class="text-truncate" style="max-width: 250px;">{{ course.description }}</td>
+          
+          <!-- Status badge: Active or Inactive -->
+          <td>
+            {% if course.situation %}
+              <span class="badge bg-success">Active</span>
+            {% else %}
+              <span class="badge bg-danger">InActive</span>
+            {% endif %}
+          </td>
+          
+          <!-- Views badge with color based on number of views -->
+          <td>
+            {% if course.views >= 1000 %}
+              <span class="badge bg-success">{{ course.views }}</span>
+            {% elif course.views >= 500 %}
+              <span class="badge bg-secondary">{{ course.views }}</span>
+            {% elif course.views >= 50 %}
+              <span class="badge bg-warning">{{ course.views }}</span>
+            {% else %}
+              <span class="badge bg-danger">{{ course.views }}</span>
+            {% endif %}
+          </td>
+          
+          <!-- Course ID -->
+          <td>{{ course.id }}</td>
+          
+          <!-- Course image with fallback image if none -->
+          <td>
+            {% if not course.image %}
+              <img src="{% static 'courses_app/img/default.png' %}" width="50" height="50" class="rounded" alt="Default Image">
+            {% else %}
+              <img src="{{ course.image.url }}" width="50" height="50" class="rounded" alt="{{ course.title }}">
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Add some space at bottom -->
+  <div class="mt-4 text-center">
+    <a href="/course/add" class="btn btn-success btn-lg">Add New Course</a>
+  </div>
+</div>
+
+<!-- Bootstrap JS for enhanced features -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
 </body>
 </html>

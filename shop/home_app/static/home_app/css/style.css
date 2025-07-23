@@ -1,22 +1,111 @@
-/* style.css */
+/* Set a soft, modern background color and a clean font for the entire body */  
+body {  
+  background-color: #f0f2f5; /* Light, neutral background color for a fresh look */  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, easy-to-read font */  
+  margin: 0; /* Remove default margin */  
+  padding: 0; /* Remove default padding */  
+  display: flex; /* Use flexbox for centering content */  
+  justify-content: center; /* Horizontally center content */  
+  align-items: center; /* Vertically center content */  
+  min-height: 100vh; /* Ensure full viewport height */  
+}  
 
-.c1 {
-    color: red;
-    font-weight: bold;
-    font-size: 24px;
-    margin-top: 20px;
-    text-align: center;
+/* Style for the main page heading, large and eye-catching */  
+h1 {  
+  font-size: 3rem; /* Large font size for prominence */  
+  font-weight: 700; /* Bold weight */  
+  letter-spacing: 2px; /* Spacing between letters for clarity */  
+  color: #343a40; /* Dark gray color for contrast */  
+  margin-bottom: 20px; /* Space below heading */  
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */  
+  text-align: center; /* Centered text alignment */  
+}  
+
+/* Style for subtitles under the main header */  
+.subtitle {  
+  font-size: 1.3rem; /* Slightly smaller than main heading */  
+  color: #555; /* Grayish tone for subtleties */  
+  margin-bottom: 40px; /* Space below subtitle */  
+  text-align: center; /* Centered text */  
+}  
+
+/* Contain all main content, styled with modern and clean design */  
+.card-custom {  
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Deep shadow for floating effect */  
+  border-radius: 20px; /* Rounded corners for smooth look */  
+  padding: 40px; /* Spacious inside padding */  
+  max-width: 950px; /* Ensures responsiveness on large screens */  
+  width: 100%; /* Full width responsively */  
+  background-color: #fff; /* White background for contrast */  
+  margin-top: 50px; /* Top margin to separate from other elements */  
+  box-sizing: border-box; /* Include padding in width calculations */  
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth transition effects */  
+  text-align: center; /* Text aligned to center */  
+}  
+
+/* Responsive grid layout for cards, adapts nicely to screen sizes */  
+.grid {  
+  display: grid; /* Use CSS grid for layout */  
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Auto-fit columns with min width */  
+  gap: 30px; /* Gap between grid items */  
+}  
+
+/* Make entire card clickable via link wrapper */  
+.card-zoom {  
+  text-decoration: none; /* Remove underline from links */  
+  display: block; /* Make block level to span entire card */  
+  cursor: pointer; /* Cursor pointer on hover */  
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animate hover effects */  
+}  
+
+/* Style the individual cards */  
+.custom-card {  
+  padding: 30px; /* Padding inside card */  
+  border-radius: 20px; /* Rounded corners */  
+  background: #fff; /* White background for clarity */  
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Soft depth shadow */  
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth hover transition */  
+  transform: translateY(0); /* Initial position */  
+}  
+
+/* Hover effects for the cards - lifting and shining */  
+.card-zoom:hover {  
+  transform: translateY(-12px) scale(1.07); /* Slight lift and enlarge */  
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); /* Enhanced shadow for floating effect */  
+}  
+
+/* Titles inside each card */  
+.custom-card h5 {  
+  font-family: 'Roboto', sans-serif; /* Modern font for titles */  
+  font-size: 1.5rem; /* Slightly larger for emphasis */  
+  margin-bottom: 15px; /* Space below title */  
+  color: #222; /* Dark color for readability */  
+}  
+
+/* Description or paragraph inside cards */
+.custom-card p {
+  font-size: 1rem; /* Standard font size for body text */
+  color: #555; /* Gray tone for less emphasis */
+  line-height: 1.6; /* Spacing between lines for readability */
 }
 
-/* Optional additional styles */
-body {
-    background-color: #f8f9fa; /* Light gray background */
-    font-family: Arial, sans-serif;
+/* Responsive adjustments for smaller screens (tablets and below) */
+@media(max-width: 768px) {
+  h1 {
+    font-size: 2.5rem; /* Smaller heading size on small screens */
+  }
+  .subtitle {
+    font-size: 1.1rem; /* Adjusted subtitle size */
+  }
+  .custom-card {
+    padding: 20px; /* Reduce padding for smaller screens */
+  }
+  .grid {
+    gap: 20px; /* Slightly smaller gaps */
+  }
 }
 
-/* Style for the button if you want to customize further */
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
+/* Optional: Additional hover effects for further interactivity */
+.custom-card:hover {
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* Slightly stronger on hover */
 }

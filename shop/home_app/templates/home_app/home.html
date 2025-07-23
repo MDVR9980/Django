@@ -1,25 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
-<html Lang="en">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name=viewport content="width=device-width, intial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}" >
-    <link rel="stylesheet" href="{% static 'home_app/css/style.css' %}">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welcome to Our Project</title>
+<!-- Bootstrap 5 CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans&display=swap" rel="stylesheet" />
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'home_app/css/style.css' %}" />
 </head>
 <body>
-    <div class="container">
-        <h1 class="text text-center">
-            This is Home Page
-        </h1>
-        </hr>
-        <button class="btn btn-danger btn-block">
-            Click Here
-        </button>
-    </div>
-    <h1 class="c1">Hello</h1>
+<div class="container main-container text-center">
+  <h1 class="title mb-4">Welcome to Our Project</h1>
+  <p class="subtitle mb-5">Select an application to get started</p>
+  <div class="grid">
+    <a href="ticket/add" class="card-zoom">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h5 class="card-title">Tickets Management</h5>
+          <p class="card-text">Create and manage support tickets conveniently.</p>
+        </div>
+      </div>
+    </a>
+    <a href="course/list" class="card-zoom">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h5 class="card-title">Course Management</h5>
+          <p class="card-text">Add, edit, and view courses easily.</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<!-- JS for animations -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
