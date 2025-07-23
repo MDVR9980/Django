@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_SMS Marketing Platform</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="001-Fone-Dynamics-Homepage---@2560" transform="translate(-730.000000, -3511.000000)">
+            <g id="#4Advanced-SMS" transform="translate(-1.000000, 2421.000000)">
+                <g id="Advanced" transform="translate(711.000000, 658.000000)">
+                    <g id="Group-90" transform="translate(0.000000, 412.000000)">
+                        <g id="Group-38" transform="translate(20.000000, 20.000000)">
+                            <g id="icon_SMS-Marketing-Platform">
+                                <rect id="Rectangle-13" fill="#D3F9FF" x="0" y="0" width="50" height="50" rx="25"></rect>
+                                <g id="Group-91" transform="translate(21.000000, 20.000000)"></g>
+                                <path d="M15.5256098,37 C15.3775797,37 15.232364,36.9341853 15.1248593,36.8114156 C14.9745779,36.6402341 14.9236398,36.38805 14.9934334,36.1605463 L15.9528143,33.0356145 C14.6906191,31.5089036 14,29.6123016 14,27.6533654 C14,22.8821172 18.0376173,19 23,19 C27.9623827,19 32,22.8821172 32,27.6533654 C32,32.4246137 27.9629456,36.3067309 23.0002814,36.3067309 C21.7541276,36.3067309 20.5490619,36.0662542 19.4149156,35.5919454 L15.7020638,36.9680419 C15.6440901,36.9895582 15.5847092,37 15.5256098,37 Z" id="Shape" fill="#268ACD" fill-rule="nonzero"></path>
+                                <path d="M26,19 C29.3137085,19 32,21.6862915 32,25 L30.5,25 C30.5,22.5147186 28.4852814,20.5 26,20.5 L26,19 Z M26,23.5 L26,22 C27.6568542,22 29,23.3431458 29,25 L27.5,25 C27.5,24.1715729 26.8284271,23.5 26,23.5 Z M26,16 C30.9705627,16 35,20.4771525 35,26 L33.5,26 C33.5,21.3976271 30.1421356,17.6666667 26,17.6666667 L26,16 Z" id="Combined-Shape" fill="#52CFF3" fill-rule="nonzero"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
