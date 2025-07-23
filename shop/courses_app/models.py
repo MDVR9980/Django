@@ -6,6 +6,7 @@ class Course(models.Model):
     description = models.TextField()
     situation = models.BooleanField(default=True)
     views = models.IntegerField(default=0)
+    image = models.ImageField(null=True, upload_to="shop")
 
     def __str__(self):
         return self.title
