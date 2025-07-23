@@ -211,88 +211,20 @@
     <div class="animation-project d-none d-md-inline-block"></div>
     <div class="row gallery">
       <!-- single project -->
-      <div class="col-12 col-md-6 col-lg-4 py-4 d-flex align-items-center justify-content-center gallery-img">
-        <div class="img-pro">
-          <div class="addition">
-            <img src="{% static 'img/project1.jpg' %}" alt="" class="img-fluid pro-photo ">
-              <i class="fas fa-search pro-link"></i>
-          </div>
-          <div class="py-2 pro-name-activity w-100 text-center">
-            <a href="#" class="pro-name font-weight-bold text-center">هوشانه</a>
-            <p class="pro-activity">فروشگاه</p>
-          </div>
-        </div>
-      </div>
-      <!-- end single project -->
-      <!-- single project -->
-      <div class="col-12 col-md-6 col-lg-4 py-4 d-flex align-items-center justify-content-center gallery-img">
-        <div class="img-pro">
-          <div class="addition">
-            <img src="{% static 'img/project1.jpg' %}" alt="" class="img-fluid pro-photo ">
-            <i class="fas fa-search pro-link"></i>
-          </div>
-          <div class="py-2 pro-name-activity w-100 text-center">
-            <a href="#" class="pro-name font-weight-bold text-center">باشگاه یار</a>
-            <p class="pro-activity">اپلیکیشن مدیریت باشگاه</p>
+      {% for object in projects %}
+        <div class="col-12 col-md-6 col-lg-4 py-4 d-flex align-items-center justify-content-center gallery-img">
+          <div class="img-pro">
+            <div class="addition">
+              <img src="{{ object.image.url }}" alt="" class="img-fluid pro-photo ">
+                <i class="fas fa-search pro-link"></i>
+            </div>
+            <div class="py-2 pro-name-activity w-100 text-center">
+              <a href="#" class="pro-name font-weight-bold text-center">{{ object.title }}</a>
+              <p class="pro-activity">{{ object.description }}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- end single project -->
-      <!-- single project -->
-      <div class="col-12 col-md-6 col-lg-4 py-4 d-flex align-items-center justify-content-center gallery-img">
-        <div class="img-pro">
-          <div class="addition">
-            <img src="{% static 'img/project1.jpg' %}" alt="" class="img-fluid pro-photo ">
-            <i class="fas fa-search pro-link"></i>
-          </div>
-          <div class="py-2 pro-name-activity w-100 text-center">
-            <a href="#" class="pro-name font-weight-bold text-center">فرخ رخ</a>
-            <p class="pro-activity">فروشگاه</p>
-          </div>
-        </div>
-      </div>
-      <!-- end single project -->
-      <!-- single project -->
-      <div class="col-12 col-md-6 col-lg-4 py-4 d-flex align-items-center justify-content-center gallery-img">
-        <div class="img-pro">
-          <div class="addition">
-            <img src="{% static 'img/project1.jpg' %}" alt="" class="img-fluid pro-photo ">
-            <i class="fas fa-search pro-link"></i>
-          </div>
-          <div class="py-2 pro-name-activity w-100 text-center">
-            <a href="#" class="pro-name font-weight-bold text-center">آژا فیت</a>
-            <p class="pro-activity">وبلاگ ورزشی</p>
-          </div>
-        </div>
-      </div>
-      <!-- end single project -->
-      <!-- single project -->
-      <div class="col-12 col-md-6 col-lg-4 py-4 d-flex align-items-center justify-content-center gallery-img">
-        <div class="img-pro">
-          <div class="addition">
-            <img src="{% static 'img/project1.jpg' %}" alt="" class="img-fluid pro-photo ">
-            <i class="fas fa-search pro-link"></i>
-          </div>
-          <div class="py-2 pro-name-activity w-100 text-center">
-            <a href="#" class="pro-name font-weight-bold text-center">لینکدونی</a>
-            <p class="pro-activity">اپلیکیشن</p>
-          </div>
-        </div>
-      </div>
-      <!-- end single project -->
-      <!-- single project -->
-      <div class="col-12 col-md-6 col-lg-4 py-4 d-flex align-items-center justify-content-center gallery-img">
-        <div class="img-pro">
-          <div class="addition">
-            <img src="{% static 'img/project1.jpg' %}" alt="" class="img-fluid pro-photo ">
-            <i class="fas fa-search pro-link"></i>
-          </div>
-          <div class="py-2 pro-name-activity w-100 text-center">
-            <a href="#" class="pro-name font-weight-bold text-center">فات چمپیون</a>
-            <p class="pro-activity">فروشگاه</p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
       <!-- end single project -->
     </div>
   </section>
