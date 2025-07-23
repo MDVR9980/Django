@@ -59,6 +59,7 @@
                       <button type="button" class="btn message-btn">ارسال پیام </button>
                     </div>
                   </div>
+                </form>
               </div>
             </div>
 
@@ -466,15 +467,16 @@
       </div>
       <!--form  -->
       <div class="col-12 col-lg-6">
-        <form>
+        <form method="post">
+          {% csrf_token %}
           <div class="form-group py-5 py-lg-0">
-            <input type="text" class="form-control my-2 form-box" placeholder="نام..." required id="InputName">
-            <input type="email" class="form-control my-2 form-box" required placeholder="ایمیل..." id="InputEmail"
+            <input type="text" name="fname" class="form-control my-2 form-box" placeholder="نام..." required id="InputName">
+            <input type="email" name="email" class="form-control my-2 form-box" required placeholder="ایمیل..." id="InputEmail"
               aria-describedby="emailHelp">
-            <input type="text" class="form-control my-2 form-box" placeholder="موضوع..." id="InputName">
+            <input type="text" name="sub" class="form-control my-2 form-box" placeholder="موضوع..." id="InputName">
             <textarea name="body" id="message" class="my-2 w-100 form-box" placeholder="پیام..."></textarea>
             <div class="w-100 text-center">
-              <button class="btn message-btn text-center">ارسال پیام</button>
+              <button type="submit" class="btn message-btn text-center">ارسال پیام</button>
             </div>
           </div>
         </form>

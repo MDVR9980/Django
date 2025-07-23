@@ -20,4 +20,4 @@ class Message(models.Model):
     body = models.TextField()
 
     def __str__(self):
-        return f'{self.name}' - {self.email}
+        return f'{self.fname} - {self.email}'
