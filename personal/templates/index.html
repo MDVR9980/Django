@@ -7,19 +7,6 @@
 </head>
 
 <body>
-  <!-- preloader -->
-  <div class="preloader d-flex align-items-center justify-content-center">
-    <img src="{% static 'img/preloader.gif' %}" alt="preloader">
-  </div>
-  <!-- end preloader -->
-  <!-- welcome message -->
-  <div class="intro">
-    <h1 class="logo-header">
-      <div class="logo">به وبسایت ما</div>
-      <div class="logo">خوش اومدین</div>
-    </h1>
-  </div>
-  <!-- end welcome message -->
   <!-- start nav -->
   <section class="nav-head section">
     <nav class="navbar navbar-expand-md container">
@@ -508,17 +495,17 @@
         <div class="col-12 col-md-4 my-4 my-md-0">
           <p class="footer-text">مارا در شبکه های اجتماعی دنبال کنید</p>
           <div class="footer-icons">
-            <a href="#"><i class="fab fa-instagram footer-icon" title="Instagram"></i></a>
-            <a href="#"><i class="fab fa-telegram footer-icon" title="Telegram"></i></a>
-            <a href="#"><i class="fab fa-whatsapp footer-icon" title="Whatsapp"></i></a>
+            <a href="{{ footer.instagram }}"><i class="fab fa-instagram footer-icon" title="Instagram"></i></a>
+            <a href="{{ footer.telegram }}"><i class="fab fa-telegram footer-icon" title="Telegram"></i></a>
+            <a href="{{ footer.whatsapp }}"><i class="fab fa-whatsapp footer-icon" title="Whatsapp"></i></a>
           </div>
         </div>
         <div class="col-12 col-md-4">
           <h3 class="footer-title">تماس با ما</h3>
-          <p class="footer-text">آدرس پستی:اهواز، کیان آباد</p>
-          <p class="footer-text">کیان آباد</p>
-          <p class="footer-text">91232424223+</p>
-          <p class="footer-email">faracodeteam@gmail.com</p>
+          <p class="footer-text">آدرس پستی: {{ footer.address }}</p>
+          <p class="footer-text">{{ footer.city }}</p>
+          <p class="footer-text">{{ footer.phone }}</p>
+          <p class="footer-email">{{ footer.email }}</p>
         </div>
       </div>
     </div>

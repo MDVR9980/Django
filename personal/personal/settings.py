@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # my apps
     'projects_app',
+    'contactus_app',
 ]
 
 MIDDLEWARE = [
