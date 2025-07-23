@@ -16,7 +16,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Discription</th>
+                    <th scope="col">Description</th>
                     <th scope="col">Situation</th>
                     <th scope="col">Views</th>
                     <th scope="col">Id</th>
@@ -27,7 +27,7 @@
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
                     <td><a href="/course/detail/{{ course.id }}">{{ course.title }}</td></a>
-                    <td>{{ course.discription }}</td>
+                    <td>{{ course.description }}</td>
                     {% if course.situation %}
                         <td>
                             <span class="badge bg-success">Active</span>
@@ -40,8 +40,12 @@
                     <td>
                     {% if course.views >= 1000 %}
                         <span class="badge bg-success">{{ course.views }}</span>
-                    {% else %}
+                    {% elif course.views >= 500 %}
                         <span class="badge bg-secondary">{{ course.views }}</span>
+                    {% elif course.views >= 50 %}
+                        <span class="badge bg-warning">{{ course.views }}</span>
+                    {% else %}
+                        <span class="badge bg-danger">{{ course.views }}</span>
                     {% endif %}
                     </td>
                     <td>{{ course.id }}</td>

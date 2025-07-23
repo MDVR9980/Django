@@ -9,9 +9,25 @@
 </head>
 <body>
     <div class="container">
-        {{ course.title }}
+        <h1 class="c1 text text-center">
+            Add New Course
+        </h1>
+        <hr>
+        <a href="/course/list" class="btn btn-danger btn-block">
+            Course List
+        </a>
+        <hr>
+        <form method="get">
+            <input class="form-control" name="title" type="text" placeholder="title">
+            <hr>
+            <input class="form-control" name="description" type="text" placeholder="description">
+            <hr>
+            <button class="btn btn-success" type="submit">send</button>
+        </form>
         <br>
-       {{ course.description }}
+        {% comment %} <h1 class="c1 text text-center text-success">
+            {{ message }}
+        </h1> {% endcomment %}
     </div>
 </body>
 </html>

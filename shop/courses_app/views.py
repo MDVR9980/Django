@@ -12,3 +12,25 @@ def course_detail(request, id):
     course.save()
 
     return render(request, "courses_app/course_detail.html", context={'course': course})
+
+def add_course(request):
+    if request.method == 'GET':
+        # Retrieve 'title' and 'description' from GET parameters, default to empty string if not provided
+        # Title = request.GET.get('title', '').strip()
+        Title = request.GET.get('title')
+        # Description = request.GET.get('description', '').strip()
+        Description = request.GET.get('description')
+
+        # Check if both fields have been filled
+        if Title and Description:
+            # Create and save new course if both fields are provided
+            # new_course = Course(title=Title, description=Description)
+            # new_course.save()
+            Course.objects.create(title=Title, description=Description)
+            
+
+            # Optionally, add a success message or reset the form
+            return render(request, 'courses_app/add_course.html', {
+                'message': 'Course added successfully',
+            })
+        return render(request, 'courses_app/add_course.html')
