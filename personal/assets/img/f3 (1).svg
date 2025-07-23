@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_Phone Number</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="001-Fone-Dynamics-Homepage---@2560" transform="translate(-1254.000000, -2105.000000)">
+            <g id="#3-Body-1" transform="translate(7.000000, 1407.000000)">
+                <g id="Card" transform="translate(1156.000000, 178.000000)">
+                    <g id="Group-78" transform="translate(71.000000, 500.000000)">
+                        <g id="Group-75" transform="translate(20.000000, 20.000000)">
+                            <g id="icon_Phone-Number">
+                                <rect id="Rectangle-13" fill="#A4EED7" x="0" y="0" width="50" height="50" rx="25"></rect>
+                                <g id="Group-2" transform="translate(15.000000, 15.000000)">
+                                    <path d="M2,0 L6.15384615,0 L6.15384615,3.84615385 L0,3.84615385 L0,2 L-2.22044605e-16,2 C-3.57315355e-16,0.8954305 0.8954305,-1.91384796e-17 2,-2.22044605e-16 Z" id="Rectangle-17" fill="#59CFAA"></path>
+                                    <rect id="Rectangle-17-Copy" fill="#30D769" x="6.92307692" y="0" width="6.15384615" height="3.84615385"></rect>
+                                    <path d="M13.8461538,0 L18,0 L18,-2.22044605e-16 C19.1045695,-4.2495073e-16 20,0.8954305 20,2 L20,3.84615385 L13.8461538,3.84615385 L13.8461538,0 Z" id="Rectangle-17-Copy-2" fill="#59CFAA"></path>
+                                    <rect id="Rectangle-17" fill="#59CFAA" x="0" y="5.38461538" width="6.15384615" height="3.84615385"></rect>
+                                    <rect id="Rectangle-17-Copy" fill="#30D769" x="6.92307692" y="5.38461538" width="6.15384615" height="3.84615385"></rect>
+                                    <rect id="Rectangle-17-Copy-2" fill="#59CFAA" x="13.8461538" y="5.38461538" width="6.15384615" height="3.84615385"></rect>
+                                    <path d="M0,10.7692308 L6.15384615,10.7692308 L6.15384615,14.6153846 L2,14.6153846 L2,14.6153846 C0.8954305,14.6153846 -7.52907669e-16,13.7199541 -8.8817842e-16,12.6153846 L0,10.7692308 Z" id="Rectangle-17" fill="#59CFAA"></path>
+                                    <rect id="Rectangle-17-Copy" fill="#30D769" x="6.92307692" y="10.7692308" width="6.15384615" height="3.84615385"></rect>
+                                    <path d="M6.92307692,16.1538462 L13.0769231,16.1538462 L13.0769231,18 L13.0769231,18 C13.0769231,19.1045695 12.1814926,20 11.0769231,20 L8.92307692,20 L8.92307692,20 C7.81850742,20 6.92307692,19.1045695 6.92307692,18 L6.92307692,16.1538462 Z" id="Rectangle-17-Copy" fill="#30D769"></path>
+                                    <path d="M13.8461538,10.7692308 L20,10.7692308 L20,12.6153846 L20,12.6153846 C20,13.7199541 19.1045695,14.6153846 18,14.6153846 L13.8461538,14.6153846 L13.8461538,10.7692308 Z" id="Rectangle-17-Copy-2" fill="#59CFAA"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
