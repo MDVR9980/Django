@@ -29,11 +29,21 @@
                     <td><a href="/course/detail/{{ course.id }}">{{ course.title }}</td></a>
                     <td>{{ course.discription }}</td>
                     {% if course.situation %}
-                        <td>Active</td>
+                        <td>
+                            <span class="badge bg-success">Active</span>
+                        </td>
                     {% else %}
-                        <td>InActive</td>
+                        <td>
+                            <span class="badge bg-danger">InActive</span>    
+                        </td>
                     {% endif %}
-                    <td>{{ course.views }}</td>
+                    <td>
+                    {% if course.views >= 1000 %}
+                        <span class="badge bg-success">{{ course.views }}</span>
+                    {% else %}
+                        <span class="badge bg-secondary">{{ course.views }}</span>
+                    {% endif %}
+                    </td>
                     <td>{{ course.id }}</td>
                 </tr>
                 {% endfor %}
