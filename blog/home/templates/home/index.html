@@ -72,9 +72,11 @@ https://templatemo.com/tm-551-stand-blog
                 {% if request.user.is_authenticated %}
                   <div class="d-flex" >
                     {% if request.user.first_name %}
-                      <a class="nav-link" href="">{{ request.user.first_name }} {{ request.user.last_name }}</a>
+                      {% if user.profile.image %}
+                        <span><img src="{{ user.profile.image.url }}" width="35px" height="35px" style="border-radius: 100%"></span>
                       {% else %}
-                      <a class="nav-link" href="">{{ request.user.username }}</a>
+                        <span><img src="{% static 'images/empty.png' %}" width="35px" height="35px" style="border-radius: 100%"></span>
+                      {% endif %}
                     {% endif %}
                     <a href="{% url 'account:logout' %}"><spap class="badge bg-danger mt-2">Logout</span></a>
                   </div>
