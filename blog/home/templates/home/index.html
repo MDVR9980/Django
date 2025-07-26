@@ -10,7 +10,7 @@
     <meta name="author" content="TemplateMo">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
 
-    <title>Stand CSS Blog by TemplateMo</title>
+    <title>Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -67,6 +67,23 @@ https://templatemo.com/tm-551-stand-blog
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                {% if request.user.is_authenticated %}
+                  <div class="d-flex" >
+                    {% if request.user.first_name %}
+                      <a class="nav-link" href="">{{ request.user.first_name }} {{ request.user.last_name }}</a>
+                      {% else %}
+                      <a class="nav-link" href="">{{ request.user.username }}</a>
+                    {% endif %}
+                    <a href="{% url 'account:logout' %}"><spap class="badge bg-danger mt-2">Logout</span></a>
+                  </div>
+                {% else %}
+                  <div class="d-flex">
+                    <a class="nav-link" href="{% url 'account:login' %}">Login</a><span class="mt-2">|</span>
+                    <a class="nav-link" href="{% url 'account:register' %}">Register</a>
+                  </div>
+                {% endif %}
               </li>
             </ul>
           </div>
