@@ -22,6 +22,9 @@ INSTALLED_APPS = [
     # my apps
     'projects_app',
     'contactus_app',
+
+    # others app
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
