@@ -1,501 +1,132 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 
 <head>
   {% include "includes/head_tags.html" %}
+  <style>
+    body {
+      font-family: 'Vazir', sans-serif;
+      background-color: #F8F8F8;
+      color: #2E2E2E;
+    }
+    .header-section {
+      background-color: #6C63FF;
+      color: white;
+    }
+    .btn, .login-btn {
+      background-color: #FF6584;
+      color: white;
+      border: none;
+    }
+    .activity-info, .footer-title {
+      color: #6C63FF;
+    }
+    .pro-name {
+      color: #6C63FF;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- start nav -->
+  <!-- Header Banner -->
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:00BFFF&height=160&section=header&text=MD.VR%20|%20AI%20Engineer%20🚀&fontSize=35&fontAlign=center&fontColor=FFFFFF"/>
+
+  <!-- Navbar -->
   <section class="nav-head section">
     <nav class="navbar navbar-expand-md container">
-      <!-- nav brand -->
-      <a href="#" class="navbar-brand font-weight-bold">
-        <img src="{% static 'img/logo (2).png' %}" alt="">
-        فراکد
-      </a>
-      <!-- end nav brand -->
-      <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#mynav" aria-controls="mynav"
-        aria-expanded="false" aria-label="toggle-navigation">
-        <span class="navbar-icon">
-          <i class="fas fa-bars"></i>
-        </span>
-      </button>
       <div class="collapse navbar-collapse" id="mynav">
         <ul class="navbar-nav mx-auto">
-          <a class="nav-link nav-item pr-3 home active-nav" data-text="خانه" href="#home">خانه</a>
-          <a class="nav-link nav-item pr-3 features" data-text="ویژگی ها" href="#features">ویژگی ها</a>
-          <a class="nav-link nav-item pr-3 about-us" data-text="درباره ما" href="#about-us">درباره ما</a>
-          <a class="nav-link nav-item pr-3 projects" data-text="پروژه ها" href="#projects">پروژه ها</a>
-          <a class="nav-link nav-item pr-3 options d-md-none" data-text="خدمات" href="#options"> خدمات</a>
-          <a class="nav-link nav-item pr-3 conect" data-text="تماس با ما" href="#conect"> تماس با ما</a>
+          <a class="nav-link nav-item pr-3 home active-nav" href="#home">خانه</a>
+          <a class="nav-link nav-item pr-3 features" href="#skills">مهارت‌ها</a>
+          <a class="nav-link nav-item pr-3 about-us" href="#about">درباره من</a>
+          <a class="nav-link nav-item pr-3 projects" href="#projects">پروژه‌ها</a>
+          <a class="nav-link nav-item pr-3 conect" href="#contact">تماس</a>
         </ul>
-        <!-- login -->
-        <button type="button" class="btn login-btn animate-btn" data-toggle="modal" data-target="#exampleModal">پروژه ای
-          دارید؟</button>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">پروژه خود را ثبت کنید</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body" id="myModalBody">
-                <form>
-                  <div class="form-group py-5 py-lg-0">
-                    <input type="text" class="form-control my-2 form-box" required placeholder="نام..." id="InputName">
-                    <input type="email" class="form-control my-2 form-box" required placeholder="ایمیل..."
-                      id="InputEmail" aria-describedby="emailHelp">
-                    <input type="text" class="form-control my-2 form-box" placeholder="موضوع..." id="InputName">
-                    <textarea name="body" id="message" class="my-2 w-100 form-box" placeholder="پیام..."></textarea>
-                    <div class="w-100 text-center">
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn message-btn">ارسال پیام </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-
-            <!-- end login -->
-          </div>
+      </div>
     </nav>
   </section>
-  <!-- end nav -->
-  <!-- start header -->
-  <section class="header-section " id="home">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-lg-6 my-5">
-          <div class="head-special">
-            <h3 class="rounded">بگذار کدها به جای تو کار کنند</h3>
-          </div>
-          <div class="head-name">
-            <h1 class="head-name-faracode">گروه برنامه نویسی فراکد</h1>
-          </div>
-          <div class="head-text">
-            <p class="text-justify">
-              گروه برنامه نویسی فراکد متشکل از برنامه نویسان مجرب و متعهد آماده ی پیاده سازی و ساخت انواع اپلیکیشن ها و
-              وبسایت های شرکتی و فروشگاهی با بالاترین کیفیت و مناسب ترین قیمت.
-            </p>
-          </div>
-          <div class="head-btn-group">
-            <a class="btn head-btn ml-2 d-none d-md-inline-block" href="#conect">تماس با ما</a>
-            <a class="btn head-btn d-none d-md-inline-block" href="#optionss">بیشتر بخون</a>
-          </div>
-        </div>
-        <div class="col-md-10 col-lg-6">
-          <img src="{% static 'img/img3.png' %}" alt="img" class="img-fluid header-img">
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end header -->
-  <!-- shape -->
-  <div class="custom-shape-divider-top-1630509570">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path
-        d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-        class="shape-fill"></path>
-    </svg>
-  </div>
-  <!-- end shape -->
-  <!-- our activity -->
-  <section class="activity container py-4 section" id="features">
-    <div class="activity-head">
-      <span class="d-inline-block font-weight-bold rounded activity-info my-2">فعالیت های ما در یک نگاه</span>
-      <h1 class="activity-name"> گروه برنامه نویسی
-        <span class="font-weight-bold">فراکد</span>
-      </h1>
-      <p class="activity-text">تیم برنامه نویسی فراکد پل میان شما و تکنولوژی!</p>
-    </div>
-    <div class="row py-5">
-      <!-- single activity -->
-      <div class="col-12 col-md-6 col-lg-3 py-3">
-        <div class="activity-img py-3">
-          <img src="{% static 'img/f1.svg' %}" alt="img-f1">
-        </div>
-        <h5 class="activity-name">برنامه ریزی و هدف گذاری</h5>
-        <p class="activity-text">برای بهبود اوضاع کسب و کار شما و تحقق اهدافتون برنامه داریم.</p>
-      </div>
-      <!-- single activity -->
-      <div class="col-12 col-md-6 col-lg-3 py-3">
-        <div class="activity-img py-3">
-          <img src="{% static 'img/f2.svg' %}" alt="img-f1">
-        </div>
-        <h5 class="activity-name">پشتیبانی اختصاصی</h5>
-        <p class="activity-text">از زمان شروع همکاری تا همیشه در کنار شما هستیم و مشکلات و سوالات شما رو برطرف میکنیم.
-        </p>
-      </div>
-      <!-- single activity -->
-      <div class="col-12 col-md-6 col-lg-3 py-3">
-        <div class="activity-img py-3">
-          <img src="{% static 'img/f4.svg' %}" alt="img-f1">
-        </div>
-        <h5 class="activity-name">ایده های خلاقانه و بی نظیر</h5>
-        <p class="activity-text">تیم ما به شما کمک میکنه ایده های خودتون رو به واقعیت تبدیل کنید.</p>
-      </div>
-      <!-- single activity -->
-      <div class="col-12 col-md-6 col-lg-3 py-3">
-        <div class="activity-img py-3">
-          <img src="{% static 'img/f3.svg' %}" alt="img-f1">
-        </div>
-        <h5 class="activity-name">طراحی زیبا و مدرن</h5>
-        <p class="activity-text">یک طراحی زیبا و منحصربفرد به شما کمک میکنه که بهتر دیده بشید!</p>
-      </div>
 
-    </div>
-  </section>
-  <!-- end our activity -->
-  <!-- about us -->
-  <section class="about-us container section" id="about-us">
-    <div class="row">
-      <div class="col-12 col-lg-6 ssss">
-        <img src="{% static 'img/digital-1.png' %}" alt="img" class="img-fluid">
-      </div>
-      <div class="col-12 col-lg-6 py-4 pt-lg-0">
-        <span class="d-inline-block rounded font-weight-bold activity-info my-2">مسئولیت پذیری و وقت شناسی</span>
-        <h5 class="activity-name"> وبسیایت و اپلیکیشن شمارو خاص جلوه میده! </h5>
-        <p class="text-justify about-us-text">امروزه بیشتر افراد ترجیح میدن بجای تحمل ترافیک و اتلاف کردن زمان، در منزل
-          راحت بشینن و
-          به خرید بپردازن! مردم اولین جایی که به دنبال خدمات شما می گردن، در اینترنت هست! اگر اونها شما رو در اونجا پیدا
-          نکنن، قطعا رقبای شما رو پیدا میکنن! تیم ما اینجاست که به شما کمک کنه بتونید توی این بازار رقابت کنید.
-        </p>
-        <div class="row">
-          <div class="col-12 col-md-6 d-flex py-2">
-            <img src="{% static 'img/feature-1.svg' %}" alt="img" class="feature-img pl-2">
-            <h6 class="about-text font-weight-bold">همیشه پاسخگو</h6>
-          </div>
-          <div class="col-12 col-md-6 d-flex py-2">
-            <img src="{% static 'img/feature-2.svg' %}" alt="img" class="feature-img pl-2">
-            <h6 class="about-text font-weight-bold">طراحی مدرن و تمیز</h6>
-          </div>
-          <div class="col-12 col-md-6 d-flex py-2">
-            <img src="{% static 'img/feature-3.svg' %}" alt="img" class="feature-img pl-2">
-            <h6 class="about-text font-weight-bold">تست روی چند دستگاه</h6>
-          </div>
-          <div class="col-12 col-md-6 d-flex py-2">
-            <img src="{% static 'img/feature-4.svg' %}" alt="img" class="feature-img pl-2">
-            <h6 class="about-text font-weight-bold">تجربه کاربری عالی</h6>
-          </div>
+  <!-- Header -->
+  <section class="header-section" id="home">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h1>سلام! من محمد داوود وهاب رجایی هستم</h1>
+          <p class="lead">مهندس کامپیوتر | توسعه‌دهنده Django | علاقه‌مند به Python، AI و Data Science</p>
+          <a class="btn mt-3" href="#projects">مشاهده پروژه‌ها</a>
+        </div>
+        <div class="col-lg-6">
+          <img src="{% static 'img/img3.png' %}" class="img-fluid" alt="hero">
         </div>
       </div>
     </div>
   </section>
-  <!-- end about us -->
-  <!-- projects -->
-  <section class="container projectss py-5 section  mt-4" id="projects">
+
+  <!-- About Me -->
+  <section class="container py-5" id="about">
+    <h2 class="text-center activity-info">درباره من</h2>
+    <p class="text-center">🎓 مهندس کامپیوتر | 🤖 علاقه‌مند به هوش مصنوعی و یادگیری ماشین | 🌍 عاشق کشف تکنولوژی</p>
+    <p class="text-center">در حال حاضر روی یادگیری عمیق، NLP و سیستم‌های مقیاس‌پذیر ML تمرکز دارم و برای ادامه تحصیل در مقطع ارشد هوش مصنوعی آماده می‌شوم.</p>
+  </section>
+
+  <!-- Skills -->
+  <section class="container py-5" id="skills">
+    <h2 class="text-center activity-info">مهارت‌ها</h2>
+    <p class="text-center">زبان‌ها، ابزارها و فریم‌ورک‌هایی که با آن‌ها کار کرده‌ام:</p>
     <div class="text-center">
-      <span class="d-inline-block rounded font-weight-bold activity-info my-2">پروژه های خلاقانه</span>
-      <h1 class="activity-name"> آخرین کارهای ما</h1>
-      <p class="activity-text">موارد زیر نمونه کوچکی از فعالیت های ما در حوزه طراحی و ساخت اپلیکیشن و وبسایت است.</p>
+      <img src="https://skillicons.dev/icons?i=git,docker,linux,python,django,tensorflow,pytorch,cpp,php,html,css,js,jquery,bootstrap,mysql,postgres,mongodb,redis" alt="skills">
     </div>
-    <div class="animation-project d-none d-md-inline-block"></div>
-    <div class="row gallery">
-      <!-- single project -->
+  </section>
+
+  <!-- Projects -->
+  <section class="container py-5" id="projects">
+    <h2 class="text-center activity-info">پروژه‌ها</h2>
+    <div class="row">
       {% for object in projects %}
-        <div class="col-12 col-md-6 col-lg-4 py-4 d-flex align-items-center justify-content-center gallery-img">
-          <div class="img-pro">
-            <div class="addition">
-              <img src="{{ object.image.url }}" alt="" class="img-fluid pro-photo ">
-                <i class="fas fa-search pro-link"></i>
-            </div>
-            <div class="py-2 pro-name-activity w-100 text-center">
-              <a href="#" class="pro-name font-weight-bold text-center">{{ object.title }}</a>
-              <p class="pro-activity">{{ object.description }}</p>
+        <div class="col-md-4 py-3">
+          <div class="card">
+            <img src="{{ object.image.url }}" class="card-img-top" alt="project">
+            <div class="card-body">
+              <h5 class="card-title">{{ object.title }}</h5>
+              <p class="card-text">{{ object.description }}</p>
+              <a href="{{ object.address }}" class="btn btn-sm btn-outline-dark mt-2" target="_blank">مشاهده</a>
             </div>
           </div>
         </div>
       {% endfor %}
-      <!-- end single project -->
     </div>
   </section>
-  <!-- gallery projects-->
-  <div class="preview-box">
-    <div class="detail">
-      <span>
-        <p class="current-img"></p>
-        /
-        <p class="total-img"></p>
-      </span>
-      <span class="iconClose">
-        <i class="fas fa-times"></i>
-      </span>
-    </div>
-    <div class="img-box">
-      <div class="slide prev">
-        <i class="fas fa-angle-left"></i>
-      </div>
-      <div class="slide next">
-        <i class="fas fa-angle-right"></i>
-      </div>
-      <img src="{% static 'img/futfinal.jpg' %}" alt="">
-    </div>
-  </div>
 
-  <div class="shadow"></div>
-  <!-- end gallery projects -->
-  <!-- end projects -->
-  <!--  we contant-->
-  <section class="container contant">
-    <div class="row d-flex align-items-center">
-      <div class="col-12 col-lg-6">
-        <span class="d-inline-block font-weight-bold rounded contant-info my-2">محدودیت زمانی را از بین ببرید!</span>
-        <h5 class="contant-name"> ما کمک می کنیم همیشه در دسترس باشید! </h5>
-        <p class="text-justify contant-text">
-          با داشتن وب سایت در 24 ساعت شبانه‌روز، 7روز هفته در کنار مشتری هستید. در واقع وب سایت شما نماینده‌ی شماست حتی
-          در ساعت‌هایی که شما در حال استراحت هستید وب سایت شما در حال معرفی خدمات و محصولات شما به مشتری است.
-        </p>
-        <div class="contant-box d-flex my-3 ">
-          <div class="contant-box-icon ">
-            <i class="fa fa-check contant-icon"></i>
-          </div>
-          <div class="contant-box-info mr-2">
-            <h4 class="contant-box-title">انجام خدمات سئو</h4>
-            <p class="contant-box-text">سئو به شما کمک میکنید در نتایج جستجوی گوگل رتبه بهتری کسب کنید و فروش بیشتری
-              داشته باشید.</p>
-          </div>
-        </div>
-        <div class="contant-box d-flex my-4 ">
-          <div class="contant-box-icon  mr-0">
-            <i class="fa fa-check contant-icon"></i>
-          </div>
-          <div class="contant-box-info mr-2">
-            <h4 class="contant-box-title ">انجام پروژه های بزرگ تجاری</h4>
-            <p class="contant-box-text">ما برای افرادی که قصد راه اندازی ایده های تجاری و بزرگ دارند نیز برنامه داریم،
-              تخصص ما مبارزه با محدودیت هاست.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-6">
-        <img src="{% static 'img/video-bg.jpg' %}" alt="video-bg" class="img-fluid video-bg">
-        <div class="video-icon">
-          <div class="btn video-btn" onclick="playvideo()" id="videobtn">
-            <i class="fa fa-play"></i>
-          </div>
-        </div>
-        <!-- video -->
-        <div class="video">
-          <video width="100%" id="myVideo" controls loop autoplay>
-            <source src="{% static 'video/video1.mp4' %}" type="video/mp4">
-          </video>
-          <img src="{% static 'img/close.png' %}" class="close-btn" onclick="stopPlayer()" alt="">
-        </div>
-        <!-- end video -->
-      </div>
-
-    </div>
-  </section>
-  <!-- end we contant -->
-  <!-- options -->
-  <!-- mobile -->
-  <section class="container option py-5 d-block d-md-none" id="options">
-    <div class="row">
-      <!-- single option -->
-      <div class="col-12 col-md-6 col-lg-4 my-2">
-        <div class="img-option rounded">
-          <img src="{% static 'img/1.png' %}" alt="optionimg" class="img-fluid rounded position-relative">
-        </div>
-        <div class="option-text w-75 py-3 pr-3">
-          مشاوره و راهنمایی
-        </div>
-      </div>
-      <!-- single option -->
-      <div class="col-12 col-md-6 col-lg-4 my-2">
-        <div class="img-option rounded">
-          <img src="{% static 'img/2.png' %}" alt="optionimg" class="img-fluid rounded position-relative">
-        </div>
-        <div class="option-text w-75 py-3 pr-3">
-          بررسی نیاز و پیش بینی نیاز بازار
-        </div>
-      </div>
-      <!-- single option -->
-      <div class="col-12 col-md-6 col-lg-4 my-2">
-        <div class="img-option rounded">
-          <img src="{% static 'img/3.png' %}" alt="optionimg" class="img-fluid rounded position-relative">
-        </div>
-        <div class="option-text w-75 py-3 pr-3">
-          بررسی نقاط قوت و ضعف شما
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- mobile -->
-  <!-- pc -->
-  <section class="container my-5  options d-none d-md-block" id="optionss">
-    <div class="row justify-content-around ">
-      <div class="item-opt">
-        <div class="opt my-2">
-          <div class=" wrapper">
-            <img src="{% static 'img/3.png' %}" alt="option" class="img-fluid">
-            <div class="title-opt text-center">
-              بررسی نقاط قوت و ضعف شما
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="item-opt">
-        <div class="opt my-2">
-          <div class=" wrapper">
-            <img src="{% static 'img/2.png' %}" alt="option" class="img-fluid">
-            <div class="title-opt text-center">
-              بررسی نیاز و پیش بینی نیاز بازار
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="item-opt ">
-        <div class="opt my-2">
-          <div class=" wrapper">
-            <img src="{% static 'img/1.png' %}" alt="option" class="img-fluid">
-            <div class="title-opt text-center">
-              مشاوره و راهنمایی
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- pc -->
-  <!-- end options -->
-  <!-- introduce -->
-  <section class="introduce">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-12 col-lg-4 pl-4">
-          <span class="d-inline-block font-weight-bold contant-info my-2">با تکنولوژی دوست باشیم</span>
-          <h5 class="contant-name"> گروه برنامه نویسی فراکد با دریچه ای رو به تکنولوژی روز دنیا!</h5>
-          <p class="text-justify contant-text text-white">
-            اعضای تیم ما روی اهداف تعیین شده توافق دارند و عملکرد خود را با توجه به اهداف می‌سنجند، نه فقط بر اساس میزان
-            کارهای انجام شده. وجود یک برنامه شفاف که وظیفه هر کدام از اعضا در آن به خوبی مشخص شده باشد، می‌تواند در
-            رسیدن
-            آنها به اهداف تعیین شده در قالب یک تیم کاری کمک کند. این کار مسیر را برای اعضای گروه روشن می‌کند و باعث
-            می‌شود
-            بدانند در پی رسیدن به چه چیزی هستند.
-          </p>
-        </div>
-        <div class="col-12 col-lg-8 py-3">
-          <div class="row">
-            <!-- single box -->
-            <div class="col-12 col-md-6 d-flex introduce-box rounded py-4 my-2">
-              <img src="{% static 'img/f1 (1).svg' %}" alt="img" class="pl-3 introduce-img">
-              <div class="">
-                <h3 class="introduce-box-title">سریع و با کیفیت</h3>
-                <p class="introduce-box-text">در سریع ترین زمان ممکن و با بالاترین کیفیت پروژه خود را تحویل بگیرید.</p>
-              </div>
-            </div>
-            <!-- end sigle box -->
-            <!-- single box -->
-            <div class="col-12 col-md-6 d-flex introduce-box rounded py-4 my-2">
-              <img src="{% static 'img/f4 (1).svg' %}" alt="img" class="pl-3 introduce-img">
-              <div class="">
-                <h3 class="introduce-box-title">مشاوره و راهنمایی</h3>
-                <p class="introduce-box-text">تجربیات و دانش خود را در زمینه ی بازاریابی در اختیار شما قرار میدهیم</p>
-              </div>
-            </div>
-            <!-- end sigle box -->
-            <!-- single box -->
-            <div class="col-12 col-md-6 d-flex introduce-box rounded py-4 my-2">
-              <img src="{% static 'img/f2 (1).svg' %}" alt="img" class="pl-3 introduce-img">
-              <div class="">
-                <h3 class="introduce-box-title">بدون محدودیت زمانی و مکانی</h3>
-                <p class="introduce-box-text">در هر زمان و در هرمکان میتوانید از خدمات تیم ما استفاده کنید.</p>
-              </div>
-            </div>
-            <!-- end sigle box -->
-            <!-- single box -->
-            <div class="col-12 col-md-6 d-flex introduce-box rounded py-4 my-2">
-              <img src="{% static 'img/f5.svg' %}" alt="img" class="pl-3 introduce-img">
-              <div class="">
-                <h3 class="introduce-box-title">توجه به درخواست شما</h3>
-                <p class="introduce-box-text">تمامی درخواست شما شما را به دقت بررسی کرده و در پروژه ی شما پیاده میکنیم.
-                </p>
-              </div>
-            </div>
-            <!-- end sigle box -->
-            <!-- single box -->
-            <div class="col-12 col-md-6 d-flex introduce-box rounded py-4 my-2">
-              <img src="{% static 'img/f3 (1).svg' %}" alt="img" class="pl-3 introduce-img">
-              <div class="">
-                <h3 class="introduce-box-title">پشتبانی نامحدود</h3>
-                <p class="introduce-box-text">از آغاز تا پایان در کنار شما پاسخگوی سوالات و مشکلات شما هستیم.</p>
-              </div>
-            </div>
-            <!-- end sigle box -->
-            <!-- single box -->
-            <div class="col-12 col-md-6 d-flex introduce-box rounded py-4 my-2">
-              <img src="{% static 'img/f6.svg' %}" alt="img" class="pl-3 img-fluid introduce-img">
-              <div class="">
-                <h3 class="introduce-box-title">سریع و با کیفیت</h3>
-                <p class="introduce-box-text">در سریع ترین زمان ممکن و با بالاترین کیفیت پروژه خود را تحویل بگیرید.</p>
-              </div>
-            </div>
-            <!-- end sigle box -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- shape -->
-  <div class="custom-shape-divider-top-1630509570">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path
-        d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-        class="shape-fill-two"></path>
-    </svg>
-  </div>
-  <!-- end shape -->
-  <!-- end introduce -->
-  <!-- conect us -->
-  <section class="container conect section" id="conect">
+  <!-- GitHub Stats -->
+  <section class="container py-5">
+    <h2 class="text-center activity-info">آمار گیت‌هاب</h2>
     <div class="text-center">
-      <span class="d-inline-block rounded font-weight-bold activity-info my-2">تماس با ما</span>
-      <h1 class="activity-name"> تماس با ما</h1>
-      <p class="activity-text">از طریق فرم زیر یا چت واتساپ به شماره 09910549803 با ما ارتباط برقرار کنید.</p>
-    </div>
-    <div class="row my-5">
-      <div class="col-12 col-lg-6">
-        <img src="{% static 'img/digital-2.png' %}" alt="img" class="img-fluid">
-      </div>
-      <!--form  -->
-      <div class="col-12 col-lg-6">
-        <form method="post">
-          {% csrf_token %}
-          <div class="form-group py-5 py-lg-0">
-            <input type="text" name="fname" class="form-control my-2 form-box" placeholder="نام..." required id="InputName">
-            <input type="email" name="email" class="form-control my-2 form-box" required placeholder="ایمیل..." id="InputEmail"
-              aria-describedby="emailHelp">
-            <input type="text" name="sub" class="form-control my-2 form-box" placeholder="موضوع..." id="InputName">
-            <textarea name="body" id="message" class="my-2 w-100 form-box" placeholder="پیام..."></textarea>
-            <div class="w-100 text-center">
-              <button type="submit" class="btn message-btn text-center">ارسال پیام</button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <!-- end form -->
+      <img src="https://github-readme-stats.vercel.app/api?username=MDVR9980&show_icons=true&theme=radical&count_private=true&hide=prs"/>
+      <img src="https://github-readme-streak-stats.herokuapp.com/?user=MDVR9980&theme=radical"/>
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MDVR9980&layout=compact&theme=radical"/>
     </div>
   </section>
-  <!-- end conect us -->
-  <!-- footer -->
-  <footer class="footer">
+
+  <!-- Contact -->
+  <section class="container py-5" id="contact">
+    <h2 class="text-center activity-info">تماس با من</h2>
+    <form method="post">
+      {% csrf_token %}
+      <input type="text" class="form-control my-2" placeholder="نام" name="fname" required>
+      <input type="email" class="form-control my-2" placeholder="ایمیل" name="email" required>
+      <input type="text" class="form-control my-2" placeholder="موضوع" name="sub">
+      <textarea class="form-control my-2" placeholder="پیام شما..." name="body"></textarea>
+      <button class="btn mt-2" type="submit">ارسال</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
     <div class="container">
       <div class="row d-flex align-items-center">
-        <div class="col-12 col-md-4 d-flex">
-          <a href="#" class="font-weight-bold footer-brand">
-            <img src="{% static 'img/logo (2).png' %}" alt="logo">فراکد
-          </a>
-        </div>
         <div class="col-12 col-md-4 my-4 my-md-0">
-          <p class="footer-text">مارا در شبکه های اجتماعی دنبال کنید</p>
+          <p class="footer-text">مارا در شبکه‌های اجتماعی دنبال کنید</p>
           <div class="footer-icons">
             <a href="{{ footer.instagram }}"><i class="fab fa-instagram footer-icon" title="Instagram"></i></a>
             <a href="{{ footer.telegram }}"><i class="fab fa-telegram footer-icon" title="Telegram"></i></a>
@@ -503,8 +134,8 @@
           </div>
         </div>
         <div class="col-12 col-md-4">
-          <h3 class="footer-title">تماس با ما</h3>
-          <p class="footer-text">آدرس پستی: {{ footer.address }}</p>
+          <h3 class="footer-title">تماس با من</h3>
+          <p class="footer-text">{{ footer.address }}</p>
           <p class="footer-text">{{ footer.city }}</p>
           <p class="footer-text">{{ footer.phone }}</p>
           <p class="footer-email">{{ footer.email }}</p>
@@ -512,33 +143,10 @@
       </div>
     </div>
   </footer>
-  <!-- end footer -->
-  <!-- scroll to top  -->
-  <a href="#" class="totop"><i class="fas fa-chevron-up"></i></a>
-  <!-- end scroll to top -->
-  <!-- sidebar changecolor of bg  -->
-  <!-- <div class="sidebarr">
-    <div class="btnn">
-      <i class="fas fa-cog"></i>
-    </div>
-    <ul class="color-ul">
-      <li><a class="skyblue" href="#" onclick="changebgcolor('rgb(104, 202, 241)')"></a></li>
-      <li><a class="green" href="#" onclick="changebgcolor('green')"></a></li>
-      <li><a class="black" href="#" onclick="changebgcolor('gray')"></a></li>
-    </ul>
-  </div> -->
-  <!-- end sidebar changecolor of bg -->
 
-  <!-- progress bar -->
-  <div class="progress-section">
-    <div class="progress-bar-wrap">
-      <div class="progress-bar"></div>
-    </div>
-  </div>
+  <!-- Footer Banner -->
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:00BFFF,100:8A2BE2&height=100&section=footer&text=Thanks%20for%20visiting!%20🚀&fontSize=25&fontColor=FFFFFF"/>
 
-  <!-- end progress bar -->
   {% include "includes/footer_tags.html" %}
-
 </body>
-
 </html>
