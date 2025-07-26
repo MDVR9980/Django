@@ -102,32 +102,18 @@ https://templatemo.com/tm-551-stand-blog
             <div class="item-content">
               <div class="main-content">
                 <div class="meta-category">
-                  <span>Fashion</span>
+                  <span>{{ article.category.all.first.title }}</span>
                 </div>
                 <a href="post-details.html"><h4>{{ article.title }}</h4></a>
                 <ul class="post-info">
                   <li><a href="#">{{ article.author.username }}</a></li>
                   <li><a href="#">{{ article.created }}</a></li>
-                  <li><a href="#">12 Comments</a></li>
+                  <li><a href="#"># Comments</a></li>
                 </ul>
               </div>
             </div>
           </div>
           {% endfor %}
-            <img src="{% static 'images/banner-item-06.jpg' %}" alt="">
-            <div class="item-content">
-              <div class="main-content">
-                <div class="meta-category">
-                  <span>Lifestyle</span>
-                </div>
-                <a href="post-details.html"><h4>Suspendisse nec aliquet ligula</h4></a>
-                <ul class="post-info">
-                  <li><a href="#">Admin</a></li>
-                  <li><a href="#">May 26, 2020</a></li>
-                  <li><a href="#">72 Comments</a></li>
-                </ul>
-              </div>
-            </div>
         </div>
       </div>
     </div>
