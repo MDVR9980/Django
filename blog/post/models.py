@@ -20,11 +20,16 @@ class Category(models.Model):
 # protect
 # do nothing
 
-class ArticleManager(models.Manager):
-    def counter(self):
-        return len(self.all()) 
+# class ArticleManager(models.Manager):
+
+#     def get_queryset(self):
+#         return super(ArticleManager, self).get_queryset().filter(status=True)
+
+#     def counter(self):
+#         return len(self.all()) 
     
-    # def 
+#     def published(self):
+#         return self.filter(published=True)
 
 class Article(models.Model):
     # author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
@@ -46,7 +51,10 @@ class Article(models.Model):
     floatfield = models.FloatField(default=1)
     myfile = models.FileField(upload_to='test', null=True)
 
-    objects = ArticleManager()
 
+    # objects = ArticleManager()
+    # objects = models.Manager()
+    # custom_manager = ArticleManager()
+    
     def __str__(self):
         return f"{self.title} - {self.body[:30]}" 
