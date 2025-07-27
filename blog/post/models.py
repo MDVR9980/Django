@@ -33,6 +33,7 @@ class Article(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     pub_date = models.DateField(default=timezone.now)
-
+    is_published = models.DurationField(default=timezone.timedelta(days=30, hours=0, minutes=0, seconds=0))
+    myfile = models.FileField(upload_to='test', null=True)
     def __str__(self):
-        return f"{self.title} - {self.body[:30]}"
+        return f"{self.title} - {self.body[:30]}" 

@@ -3,6 +3,9 @@
 <html lang="fa" dir="rtl">
 <head>
   {% include "includes/head_tags.html" %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
 
@@ -97,7 +100,7 @@
     .activity-info {
       font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: var(--secondary); /* نارنجی گرم */
+      color: var(--secondary);
     }
 
     #skills img {
@@ -121,13 +124,16 @@
   <!-- Navbar -->
   <section class="nav-head section">
     <nav class="navbar navbar-expand-md container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="mynav">
-        <ul class="navbar-nav mx-auto">
-          <a class="nav-link nav-item pr-3 home active-nav" href="#home">خانه</a>
-          <a class="nav-link nav-item pr-3 features" href="#skills">مهارت‌ها</a>
-          <a class="nav-link nav-item pr-3 about-us" href="#about">درباره من</a>
-          <a class="nav-link nav-item pr-3 projects" href="#projects">پروژه‌ها</a>
-          <a class="nav-link nav-item pr-3 conect" href="#contact">تماس</a>
+        <ul class="navbar-nav mx-auto text-center">
+          <li class="nav-item"><a class="nav-link pr-3 active-nav" href="#home">خانه</a></li>
+          <li class="nav-item"><a class="nav-link pr-3" href="#skills">مهارت‌ها</a></li>
+          <li class="nav-item"><a class="nav-link pr-3" href="#about">درباره من</a></li>
+          <li class="nav-item"><a class="nav-link pr-3" href="#projects">پروژه‌ها</a></li>
+          <li class="nav-item"><a class="nav-link pr-3" href="#contact">تماس</a></li>
         </ul>
       </div>
     </nav>
@@ -137,12 +143,12 @@
   <section class="header-section" id="home">
     <div class="container py-5">
       <div class="row align-items-center">
-        <div class="col-lg-6">
+        <div class="col-lg-6 text-center text-lg-start">
           <h1>سلام! من محمد داوود وهاب رجایی هستم</h1>
           <p class="lead">مهندس کامپیوتر | توسعه‌دهنده Django | علاقه‌مند به Python، AI و Data Science</p>
           <a class="btn mt-3" href="#projects">مشاهده پروژه‌ها</a>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 text-center mt-4 mt-lg-0">
           <img src="{% static 'img/img3.png' %}" class="img-fluid" alt="hero">
         </div>
       </div>
@@ -170,13 +176,13 @@
     <h2 class="text-center activity-info">پروژه‌ها</h2>
     <div class="row">
       {% for object in projects %}
-        <div class="col-md-4 py-3">
-          <div class="card">
+        <div class="col-12 col-sm-6 col-md-4 py-3">
+          <div class="card h-100">
             <img src="{{ object.image.url }}" class="card-img-top" alt="project">
-            <div class="card-body">
+            <div class="card-body d-flex flex-column">
               <h5 class="card-title">{{ object.title }}</h5>
               <p class="card-text">{{ object.description }}</p>
-              <a href="{{ object.address }}" class="btn btn-sm mt-2" target="_blank">مشاهده</a>
+              <a href="{{ object.address }}" class="btn btn-sm mt-auto" target="_blank">مشاهده</a>
             </div>
           </div>
         </div>
@@ -197,18 +203,22 @@
   <!-- Contact -->
   <section class="container py-5" id="contact">
     <h2 class="text-center activity-info">تماس با من</h2>
-    <form method="post">
-      {% csrf_token %}
-      <input type="text" class="form-control my-2" placeholder="نام" name="fname" required>
-      <input type="email" class="form-control my-2" placeholder="ایمیل" name="email" required>
-      <input type="text" class="form-control my-2" placeholder="موضوع" name="sub">
-      <textarea class="form-control my-2" placeholder="پیام شما..." name="body"></textarea>
-      <button class="btn mt-2" type="submit">ارسال</button>
-    </form>
+    <div class="row">
+      <div class="col-12 col-md-6 offset-md-3">
+        <form method="post">
+          {% csrf_token %}
+          <input type="text" class="form-control my-2" placeholder="نام" name="fname" required>
+          <input type="email" class="form-control my-2" placeholder="ایمیل" name="email" required>
+          <input type="text" class="form-control my-2" placeholder="موضوع" name="sub">
+          <textarea class="form-control my-2" placeholder="پیام شما..." name="body"></textarea>
+          <button class="btn mt-2 w-100" type="submit">ارسال</button>
+        </form>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer text-center">
+  <footer class="footer text-center py-4">
     <div class="container">
       <div class="row d-flex align-items-center">
         <div class="col-12 col-md-4 my-4 my-md-0">
@@ -233,12 +243,12 @@
   <!-- Footer Banner -->
   <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:ff9f1c,100:2ec4b6&height=100&section=footer&text=Thanks%20for%20visiting!%20🚀&fontSize=25&fontColor=FFFFFF"/>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
     }
   </script>
-
   {% include "includes/footer_tags.html" %}
-</body>
+</body>‍‍‍‍‍‍‍‍‍‍‍
 </html>
