@@ -20,6 +20,12 @@ class Category(models.Model):
 # protect
 # do nothing
 
+class ArticleManager(models.Manager):
+    def counter(self):
+        return len(self.all()) 
+    
+    # def 
+
 class Article(models.Model):
     # author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     # author = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default='1')
@@ -35,5 +41,12 @@ class Article(models.Model):
     pub_date = models.DateField(default=timezone.now)
     is_published = models.DurationField(default=timezone.timedelta(days=30, hours=0, minutes=0, seconds=0))
     myfile = models.FileField(upload_to='test', null=True)
+    status = models.BooleanField(default=True)
+    published = models.BooleanField(default=True)
+    floatfield = models.FloatField(default=1)
+    myfile = models.FileField(upload_to='test', null=True)
+
+    objects = ArticleManager()
+
     def __str__(self):
         return f"{self.title} - {self.body[:30]}" 
