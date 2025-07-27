@@ -1,36 +1,122 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
   {% include "includes/head_tags.html" %}
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+    :root {
+      --bg-light: #fdfffc;
+      --bg-dark: #011627;
+      --text-light: #fdfffc;
+      --text-dark: #011627;
+      --primary: #2ec4b6;
+      --secondary: #ff9f1c;
+      --accent: #e71d36;
+    }
+
     body {
-      font-family: 'Vazir', sans-serif;
-      background-color: #F8F8F8;
-      color: #2E2E2E;
+      font-family: 'Vazirmatn', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      transition: all 0.4s ease;
     }
+
+    body.dark-mode {
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 1000;
+      background: var(--accent);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
     .header-section {
-      background-color: #6C63FF;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
+      animation: fadeIn 2s ease-in-out;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     .btn, .login-btn {
-      background-color: #FF6584;
-      color: white;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      color: white !important;
       border: none;
+      padding: 10px 20px;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-    .activity-info, .footer-title {
-      color: #6C63FF;
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
     }
-    .pro-name {
-      color: #6C63FF;
+
+    .card {
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .footer {
+      background: var(--primary);
+      color: white;
+    }
+
+    .footer-icons a {
+      margin: 0 10px;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .footer-icons a:hover {
+      color: var(--secondary);
+    }
+
+    .activity-info {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--secondary); /* نارنجی گرم */
+    }
+
+    #skills img {
+      margin-top: 2rem;
+      max-width: 100%;
+      border-radius: 15px;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+    }
+
+    section {
+      animation: fadeIn 1.5s ease-in-out;
     }
   </style>
 </head>
-
 <body>
+  <div class="dark-toggle" onclick="toggleDarkMode()">🌓 تغییر حالت</div>
+
   <!-- Header Banner -->
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:00BFFF&height=160&section=header&text=MD.VR%20|%20AI%20Engineer%20🚀&fontSize=35&fontAlign=center&fontColor=FFFFFF"/>
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:2ec4b6,100:ff9f1c&height=160&section=header&text=MD.VR%20|%20AI%20Engineer%20🚀&fontSize=35&fontAlign=center&fontColor=FFFFFF"/>
 
   <!-- Navbar -->
   <section class="nav-head section">
@@ -90,7 +176,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ object.title }}</h5>
               <p class="card-text">{{ object.description }}</p>
-              <a href="{{ object.address }}" class="btn btn-sm btn-outline-dark mt-2" target="_blank">مشاهده</a>
+              <a href="{{ object.address }}" class="btn btn-sm mt-2" target="_blank">مشاهده</a>
             </div>
           </div>
         </div>
@@ -145,7 +231,13 @@
   </footer>
 
   <!-- Footer Banner -->
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:00BFFF,100:8A2BE2&height=100&section=footer&text=Thanks%20for%20visiting!%20🚀&fontSize=25&fontColor=FFFFFF"/>
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:ff9f1c,100:2ec4b6&height=100&section=footer&text=Thanks%20for%20visiting!%20🚀&fontSize=25&fontColor=FFFFFF"/>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 
   {% include "includes/footer_tags.html" %}
 </body>
