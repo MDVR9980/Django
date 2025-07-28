@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% include 'include/header.html' %}
     {% include 'includes/head_references.html' %}
   </head>
 
@@ -16,14 +17,11 @@
     </div>
     <!-- ***** Preloader End ***** -->
 
-
-
     {% block content %}
 
     {% endblock %}
 
-
-
-    {% include "includes/footer_references.html" %}
+    {% include 'include/footer.html' %}
+    {% include 'includes/footer_references.html' %}
   </body>
 </html>
