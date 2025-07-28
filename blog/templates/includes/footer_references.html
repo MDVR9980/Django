@@ -1,0 +1,24 @@
+{% load static %}
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Additional Scripts -->
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/owl.js' %}"></script>
+<script src="{% static 'js/slick.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+<script src="{% static 'js/accordions.js' %}"></script>
+
+<script>
+  var cleared = [];
+  cleared[0] = cleared[1] = cleared[2] = 0;
+
+  function clearField(t) {
+    if (!cleared[t.id]) {
+      cleared[t.id] = 1;
+      t.value = '';
+      t.style.color = '#fff';
+    }
+  }
+</script>
