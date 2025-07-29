@@ -53,8 +53,8 @@ class Article(models.Model):
     floatfield = models.FloatField(default=1)
     myfile = models.FileField(upload_to='test', null=True)
 
-    # class Meta:
-    #     ordering = ('-created',)
+    class Meta:
+        ordering = ('-created',)
 
     def save(self, force_insert = False, force_update = False, using = None, update_fields = None):
         self.slug = slugify(self.title)

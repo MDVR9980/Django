@@ -39,7 +39,7 @@
                     </div>
                     <div class="down-content">
                       <span>{{ article.category.all.first }}</span>
-                      <a href="post-details.html"><h4>{{ article.title }}</h4></a>
+                      <a href="{% url 'post:post_detail' article.slug %}"><h4>{{ article.title }}</h4></a>
                       <ul class="post-info">
                         <li>
                           <a href="#">{{ article.author.get_full_name }}</a>
@@ -68,20 +68,34 @@
                 </div>
               {% endfor %}
               <div class="col-lg-12">
-                <ul class="page-numbers">
-                  <li>
-                    <a href="#">1</a>
-                  </li>
-                  <li class="active">
-                    <a href="#">2</a>
-                  </li>
-                  <li>
-                    <a href="#">3</a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-angle-double-right"></i></a>
-                  </li>
-                </ul>
+                {% if articles.has_other_pages %}
+                  <ul class="page-numbers">
+                    {% if articles.has_previous %}
+                      <li>
+                        <a href="?page={{ articles.previous_page_number }}"><i class="fa fa-angle-double-left"></i></a>
+                      </li>
+                    {% endif %}
+
+                    {# Loop over the page_range passed from views #}
+                    {% for i in page_range %}
+                      {% if i == articles.number %}
+                        <li class="active">
+                          <a href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                      {% else %}
+                        <li>
+                          <a href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+
+                    {% if articles.has_next %}
+                      <li>
+                        <a href="?page={{ articles.next_page_number }}"><i class="fa fa-angle-double-right"></i></a>
+                      </li>
+                    {% endif %}
+                  </ul>
+                {% endif %}
               </div>
             </div>
           </div>
