@@ -38,7 +38,7 @@ class Article(models.Model):
     # author = models.ForeignKey(User, on_delete=models.PROTECT)
     # author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.ManyToManyField(Category)
+    category = models.ManyToManyField(Category, related_name='articles')
     title = models.CharField(max_length=70, unique_for_date='pub_date')
     body = models.TextField()
     image = models.ImageField(upload_to="images/articles")

@@ -37,7 +37,7 @@
             <ul>
               {% for category in categories %}
                 <li>
-                  <a href="#">-{{ category.title }}</a>
+                  <a href="{% url 'post:category_detail' category.id %}">-{{ category.title }}</a>
                 </li>
               {% endfor %}
             </ul>
