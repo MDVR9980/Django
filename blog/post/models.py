@@ -61,7 +61,7 @@ class Article(models.Model):
         super(Article, self).save()
 
     def get_absolute_url(self):
-        return reverse("post:article_detail", kwargs={"slug": self.slug})
+        return reverse("post:post_detail", kwargs={"slug": self.slug})
     
 
     # objects = ArticleManager()

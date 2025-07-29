@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% comment %} {% load render_partial %} {% endcomment %}
+{% load social_share %}
 {% block title %}
   Home
 {% endblock %}
@@ -53,7 +54,7 @@
                     </div>
                     <div class="down-content">
                       <span>Lifestyle</span>
-                      <a href="post-details.html"><h4>{{ article.title }}</h4></a>
+                      <a href="{% url 'post:post_detail' article.slug %}"><h4>{{ article.title }}</h4></a>
                       <ul class="post-info">
                         <li>
                           <a href="#">{{ article.author.get_full_name }}</a>
@@ -69,28 +70,9 @@
                       <div class="post-options">
                         <div class="row">
                           <div class="col-6">
-                            <ul class="post-tags">
-                              <li>
-                                <i class="fa fa-tags"></i>
-                              </li>
-                              <li>
-                                <a href="#">Beauty</a>,
-                              </li>
-                              <li>
-                                <a href="#">Nature</a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="col-6">
                             <ul class="post-share">
                               <li>
-                                <i class="fa fa-share-alt"></i>
-                              </li>
-                              <li>
-                                <a href="#">Facebook</a>,
-                              </li>
-                              <li>
-                                <a href="#">Twitter</a>
+                                {% post_to_telegram 'Telegram' article.get_absolute_url %}
                               </li>
                             </ul>
                           </div>

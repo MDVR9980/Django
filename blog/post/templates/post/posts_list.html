@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load social_share %}
 {% block title %}
   Articles List
 {% endblock %}
@@ -54,16 +54,10 @@
                       <p>{{ article.body }}</p>
                       <div class="post-options">
                         <div class="row">
-                          <div class="col-lg-12">
-                            <ul class="post-tags">
+                          <div class="col-6">
+                            <ul class="post-share">
                               <li>
-                                <i class="fa fa-tags"></i>
-                              </li>
-                              <li>
-                                <a href="#">Best Templates</a>,
-                              </li>
-                              <li>
-                                <a href="#">TemplateMo</a>
+                                {% post_to_telegram 'Telegram' article.get_absolute_url %}
                               </li>
                             </ul>
                           </div>

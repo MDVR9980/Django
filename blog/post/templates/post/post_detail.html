@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load social_share %}
 {% block title %}
   {{ article.title }}
 {% endblock %}
@@ -54,28 +54,9 @@
                     <div class="post-options">
                       <div class="row">
                         <div class="col-6">
-                          <ul class="post-tags">
-                            <li>
-                              <i class="fa fa-tags"></i>
-                            </li>
-                            <li>
-                              <a href="#">Best Templates</a>,
-                            </li>
-                            <li>
-                              <a href="#">TemplateMo</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="col-6">
                           <ul class="post-share">
                             <li>
-                              <i class="fa fa-share-alt"></i>
-                            </li>
-                            <li>
-                              <a href="#">Facebook</a>,
-                            </li>
-                            <li>
-                              <a href="#">Twitter</a>
+                              {% post_to_telegram 'Telegram' article.get_absolute_url %}
                             </li>
                           </ul>
                         </div>
