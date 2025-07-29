@@ -9,3 +9,7 @@ def home(request):
     # print(Article.objects.counter())
     
     return render(request, "home/index.html", {'articles': articles})
+
+# def sidebar(request):
+#     context = {'name': 'davood'}
+#     return render(request, 'includes/sidebar.html', context=context)

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% comment %} {% load render_partial %} {% endcomment %}
 {% block title %}
   Home
 {% endblock %}
@@ -109,6 +109,7 @@
           </div>
         </div>
         {% include 'includes/sidebar.html' %}
+        {% comment %} {% render_partial 'home:sidebar_partial' %} {% endcomment %}
       </div>
     </div>
   </section>
