@@ -4,8 +4,8 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="sidebar-item search">
-          <form id="search_form" name="gs" method="GET" action="#">
-            <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on" />
+          <form id="search_form" name="gs" method="GET" action="{% url 'post:search_articles' %}">
+            <input type="text" name="q" class="searchText" placeholder="type to search..."  value="{{ request.GET.q|default_if_none:'' }}" autocomplete="on" />
           </form>
         </div>
       </div>
