@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from post.models import Article, Category, Comment
 from django.core.paginator import Paginator
+from .forms import ContactUsForm
 
 def post_detail(request, slug):
     # article = Article.objects.get(id=pk)
@@ -73,3 +74,13 @@ def search(request):
         "total_pages": total_pages,
         "current_page": current_page,
     })
+
+def contactus(request):
+    if request.method == 'POST':
+        form = ContactUsForm(request.POST)
+        if form.is_valid():
+            # عملیات موردنظر، مثلا ذخیره یا ارسال ایمیل
+            return redirect('home:main')
+    else:
+        form = ContactUsForm()
+    return render(request, "post/contact_us.html", {"form": form})
