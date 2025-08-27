@@ -1,5 +1,6 @@
 from django import forms
 from django.core.validators import ValidationError
+from .models import Message
 
 class ContactUsForm(forms.Form):
     name = forms.CharField(
@@ -38,3 +39,27 @@ class ContactUsForm(forms.Form):
     #     if 'a' in name:
     #         raise ValidationError('a can not be in name', code='a_in_name')
     #     return name
+
+
+# class MessageForm(forms.Form):
+#     title = forms.CharField(max_length=100)
+#     text = forms.CharField(widget=forms.Textarea(attrs=""))
+#     email = forms.EmailField()
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ('title', 'text', 'email', 'age')
+        widgets = {
+            "title": forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'enter your title',
+                'style': 'max-width: 500px',
+            }),
+            'text': forms.Textarea(attrs={
+                'class': 'form-control',
+            })
+        }
+
+        # fields = '__all__'
+        # exclude = ('created_at',)

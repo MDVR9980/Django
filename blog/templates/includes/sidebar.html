@@ -1,4 +1,5 @@
 {% load static %}
+{% load my_template_tags %}
 <div class="col-lg-4">
   <div class="sidebar">
     <div class="row">
@@ -16,14 +17,7 @@
           </div>
           <div class="content">
             <ul>
-              {% for article in recent_articles %}
-                <li>
-                  <a href="{% url 'post:post_detail' article.slug %}">
-                    <h5>{{ article.title }}</h5>
-                    <span>{{ article.created }}</span>
-                  </a>
-                </li>
-              {% endfor %}
+              {% show_result recent_articles %}    
             </ul>
           </div>
         </div>

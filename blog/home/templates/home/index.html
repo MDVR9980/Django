@@ -2,6 +2,8 @@
 {% load static %}
 {% comment %} {% load render_partial %} {% endcomment %}
 {% load social_share %}
+{% load filters %}
+{% load my_template_tags %}
 {% block title %}
   Home
 {% endblock %}
@@ -66,7 +68,9 @@
                           <a href="#">12 Comments</a>
                         </li>
                       </ul>
-                      <p>{{ article.body }}</p>
+                      <p>{{ article.body|mycutter:50 }}</p>
+                      <br>
+                      <p>date time now : {% current_time '%Y-%m-%d' %}</p>
                       <div class="post-options">
                         <div class="row">
                           <div class="col-6">

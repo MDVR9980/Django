@@ -17,6 +17,13 @@
                   <div class="sidebar-heading">
                     <h2>Send us a message</h2>
                   </div>
+                  {% for message in messages %}
+                    <ul>
+                        <li>
+                            {{ message.title }} 
+                        </li>
+                    </ul>
+                  {% endfor %}
                   <div class="content">
                     <!-- Begin form -->
                     <form id="contact" method="post" novalidate>

@@ -1,0 +1,8 @@
+{% for article in objects %}
+  <li>
+    <a href="{% url 'post:post_detail' article.slug %}">
+      <h5>{{ article.title }}</h5>
+      <span>{{ article.created }}</span>
+    </a>
+  </li>
+{% endfor %}

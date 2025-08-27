@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}
+  contact us
+{% endblock %}
+{% block content %}
+  <section class="contact-us">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="down-contact">
+            <div class="row">
+              <!-- Left side: Contact form -->
+              <div class="col-lg-8">
+                <div class="sidebar-item contact-form">
+                  <div class="sidebar-heading">
+                    <h2>Send us a message</h2>
+                  </div>
+                  <div class="content">
+                    <form method="post">
+                      {% csrf_token %}
+                      <p>Are you sure you want to delete " {{ object }} "?</p>
+                      {{ form }}
+                      <input class="btn btn-warning" type="submit" value="Comfirm" />
+                    </form>
+                  </div>
+                </div>
+              </div>
+              {% comment %} <!-- Right side: Contact info and address -->
+              <div class="col-lg-4">
+                <div class="sidebar-item contact-information">
+                  <div class="sidebar-heading">
+                    <h2>contact information</h2>
+                  </div> #PR8C92CL2
+                  <div class="content">
+                    <ul>
+                      <li>
+                        <h5>090-484-8080</h5>
+                        <span>PHONE NUMBER</span>
+                      </li>
+                      <li>
+                        <h5>info@company.com</h5>
+                        <span>EMAIL ADDRESS</span>
+                      </li>
+                      <li>
+                        <h5>
+                          123 Aenean id posuere dui,
+                          <br />Praesent laoreet 10660
+                        </h5>
+                        <span>STREET ADDRESS</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> {% endcomment %}
+
+        {% comment %} <!-- Map Section -->
+        <div class="col-lg-12">
+          <div id="map">
+            <iframe src="https://maps.google.com/maps?q=Av.%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="450px" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+        </div> {% endcomment %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

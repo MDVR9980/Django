@@ -59,8 +59,9 @@
                         </div> {% endcomment %}
                         <!-- Submit Button -->
                         {{ form }}
+                        <a href="{% url 'post:message_delete' object.id %}" class="btn btn-danger">Delete</a>
                         <div class="col-lg-12 mt-3">
-                          <button type="submit" class="main-button">Send Message</button>
+                          <button type="submit" class="main-button">Submit</button>
                         </div>
                       </div>
                     </form>
