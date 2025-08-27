@@ -9,6 +9,10 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name = "دسته بندی"
+        verbose_name_plural = "دسته بندی ها"
 
 
 # Meny (article) To One (user):
@@ -56,6 +60,8 @@ class Article(models.Model):
 
     class Meta:
         ordering = ('-created',)
+        verbose_name = "مقاله"
+        verbose_name_plural = "مقالات"
 
     def save(self, force_insert = False, force_update = False, using = None, update_fields = None):
         self.slug = slugify(self.title)
@@ -82,6 +88,10 @@ class Comment(models.Model):
     def __str__(self):
         return self.body[:50]
     
+    class Meta:
+        verbose_name = "کامنت"
+        verbose_name_plural = "کامنت ها"
+    
 class Message(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField()
@@ -91,3 +101,7 @@ class Message(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name = "پیام"
+        verbose_name_plural = "پیام ها"

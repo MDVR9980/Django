@@ -6,6 +6,8 @@ from django.views.generic.base import View, TemplateView, RedirectView
 from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView, DeleteView
 from django.views.generic import ArchiveIndexView, YearArchiveView
 from django.urls import reverse_lazy
+# from django.contrib.auth.mixins import LoginRequiredMixin
+from .mixins import CustomLoginrequiredMixins
 
 def post_detail(request, slug):
     # article = Article.objects.get(id=pk)
@@ -144,7 +146,8 @@ class ArticleDetailView(DetailView):
 
     # queryset = Article.objects.filter(published=True)
 
-class ArticleListView(ListView):
+# class ArticleListView(LoginRequiredMixin, ListView):
+class ArticleListView(CustomLoginrequiredMixins, ListView):
     model = Article
     template_name = "post/posts_list.html"
     context_object_name = "articles"  # <- ensure this line exists
