@@ -3,7 +3,7 @@
 {% load social_share %}
 
 {% block title %}
-  {{ article.title }}
+  {{ article.title|default:'Untitled' }}
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,7 @@
           <div class="col-lg-12">
             <div class="text-content">
               <h4>Post Details</h4>
-              <h2>{{ article.title }}</h2>
+              <h2>{{ article.title|default:'Untitled' }}</h2>
             </div>
           </div>
         </div>
@@ -29,31 +29,55 @@
   <section class="blog-posts grid-system">
     <div class="container">
       <div class="row">
+        <!-- Main Content -->
         <div class="col-lg-8">
           <div class="all-blog-posts">
             <div class="row">
               <div class="col-lg-12">
                 <div class="blog-post">
                   <div class="blog-thumb">
-                    <img src="{{ article.image.url }}" alt="" />
+                    <img src="{{ article.image.url }}" alt="{{ article.title|default:'Post image' }}" />
                   </div>
+
                   <div class="down-content">
                     <span>Lifestyle</span>
-                    <a href="#"><h4>{{ article.title }}</h4></a>
+                    <a href="#"><h4>{{ article.title|default:'Untitled' }}</h4></a>
                     <ul class="post-info">
                       <li>
-                        <a href="#">{{ article.author.get_full_name }}</a>
+                        <a href="#">{{ article.author.get_full_name|default:'Unknown' }}</a>
                       </li>
                       <li>
-                        <a href="#">{{ article.created }}</a>
+                        <a href="#">
+                          {% if article.created_at %}
+                            {{ article.created_at|date:'F j, Y' }}
+                          {% elif article.created %}
+                            {{ article.created|date:'F j, Y' }}
+                          {% else %}
+                            Unknown date
+                          {% endif %}
+                        </a>
                       </li>
                       <li>
                         <a href="#">10 Comments</a>
                       </li>
                     </ul>
-                    <p>{{ article.body|safe }}</p>
+                    <p>{{ article.body|default_if_none:''|safe }}</p>
+
                     <div class="post-options">
                       <div class="row">
+                        <div class="col-6">
+                          <ul class="post-tags">
+                            {% if is_liked %}
+                              <li>
+                                <a onclick="like('{{ article.slug }}', '{{ article.id }}')"><i id="like" style="" class="fa fa-heart"></i></a><span id="count">{{ article.likes.all.count }}</span>
+                              </li>
+                            {% else %}
+                              <li>
+                                <a onclick="like('{{ article.slug }}', '{{ article.id }}')"><i id="like" style="" class="fa fa-heart-o"></i></a><span id="count">{{ article.likes.all.count }}</span>
+                              </li>
+                            {% endif %}
+                          </ul>
+                        </div>
                         <div class="col-6">
                           <ul class="post-share">
                             <li>
@@ -62,9 +86,9 @@
                           </ul>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
+                    </div> <!-- /post-options -->
+                  </div> <!-- /down-content -->
+                </div> <!-- /blog-post -->
               </div>
 
               <!-- Comments Section -->
@@ -76,7 +100,7 @@
                   <div class="content">
                     <ul>
                       {% for comment in article.comments.all %}
-                        {% if comment.parent == None %}
+                        {% if comment.parent is None %}
                           <li>
                             <div class="author-thumb">
                               {% if comment.user.profile.image %}
@@ -86,7 +110,7 @@
                               {% endif %}
                             </div>
                             <div class="right-content">
-                              <h4>{{ comment.user.get_full_name }}<span>{{ comment.created_at }}</span></h4>
+                              <h4>{{ comment.user.get_full_name|default:'Guest' }}<span>{{ comment.created_at }}</span></h4>
                               <p>{{ comment.body }}</p>
                               <button onclick="set_value({{ comment.id }})" class="btn btn-primary">reply</button>
                             </div>
@@ -102,7 +126,7 @@
                                 {% endif %}
                               </div>
                               <div class="right-content">
-                                <h4>{{ reply.user.get_full_name }}<span>{{ reply.created_at }}</span></h4>
+                                <h4>{{ reply.user.get_full_name|default:'Guest' }}<span>{{ reply.created_at }}</span></h4>
                                 <p>{{ reply.body }}</p>
                               </div>
                             </li>
@@ -125,7 +149,7 @@
                       <form id="comment" action="#" method="post">
                         {% csrf_token %}
                         <div class="row">
-                          <input type="hidden" id="parent_id" name="parent_id"/>
+                          <input type="hidden" id="parent_id" name="parent_id" />
                           <div class="col-lg-12">
                             <fieldset>
                               <textarea name="body" rows="6" id="body" placeholder="Type your comment" required></textarea>
@@ -144,19 +168,28 @@
               {% else %}
                 <a class="btn btn-danger" href="{% url 'account:login' %}">For sending comment please login</a>
               {% endif %}
-            </div>
-          </div>
-        </div>
+            </div> <!-- /row inside all-blog-posts -->
+          </div> <!-- /all-blog-posts -->
+        </div> <!-- /col-lg-8 -->
 
         <!-- Sidebar -->
         {% include 'includes/sidebar.html' %}
-      </div>
-    </div>
+      </div> <!-- /row -->
+    </div> <!-- /container -->
   </section>
+
   <script>
     function set_value(id) {
-      document.getElementById('parent_id').value = id
-      window.location.href = '#body'
+      var parentInput = document.getElementById('parent_id')
+      if (parentInput) {
+        parentInput.value = id
+      }
+      // Focus the comment body for quick reply
+      var body = document.getElementById('body')
+      if (body) {
+        body.focus()
+        body.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
     }
   </script>
 {% endblock %}

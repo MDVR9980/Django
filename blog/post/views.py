@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
-from post.models import Article, Category, Comment, Message, User
+from post.models import Article, Category, Comment, Message, User, Like
 from django.core.paginator import Paginator
 from .forms import ContactUsForm, MessageForm
 from django.views.generic.base import View, TemplateView, RedirectView
@@ -8,6 +8,9 @@ from django.views.generic import ArchiveIndexView, YearArchiveView
 from django.urls import reverse_lazy
 # from django.contrib.auth.mixins import LoginRequiredMixin
 from .mixins import CustomLoginrequiredMixins
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+
 
 def post_detail(request, slug):
     # article = Article.objects.get(id=pk)
@@ -139,10 +142,14 @@ class ArticleDetailView(DetailView):
     # slug_url_kwarg = "slug"
     # pk_url_kwarg = "id"
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['name'] = "mdvr"
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.user.likes.filter(article__slug=self.object.slug, user_id=self.request.user.id).exists():
+            context['is_liked'] = True
+        else:
+            context['is_liked'] = False
+
+        return context
 
     # queryset = Article.objects.filter(published=True)
 
@@ -247,3 +254,13 @@ class YearArchiveArticleView(YearArchiveView):
     allow_future = True
     # template_name_suffix = '_archive_year' # by default : _archive_year
     # template_name = "article_archive_year"
+
+
+def like(request, slug, pk):
+    try:
+        like = Like.objects.get(article__slug=slug, user_id=request.user.id)
+        like.delete()
+        return JsonResponse({"response": "unliked"})
+    except Like.DoesNotExist:
+        Like.objects.create(article_id=pk, user_id=request.user.id)
+        return JsonResponse({"response": "liked"})
