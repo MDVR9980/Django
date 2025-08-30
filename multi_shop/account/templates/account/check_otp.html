@@ -1,33 +1,108 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 {% block main %}
-<!-- register Start -->
-    <div class="container-fluid">
-        <h2 class="section-title position-relative text-uppercase text-center mx-xl-5 mb-4"><span class="bg-secondary pr-3">Check Otp</span></h2>
-        <div class=" px-xl-5">
-            <div class=" mb-5 contact-us" style="">
-                <div class="contact-form bg-light p-30">
-                    <div id="success"></div>
-                    <form method="post">
-                        {% csrf_token %}
-                        <div class="control-group">
-                            {% comment %} {% for error in form.non_field_errors %}
-                                <p class="alert alert-danger">{{ error }}</p>
-                            {% endfor %} {% endcomment %}
-                            {% for error in form.phone.errors %}
-                                <p class="alert alert-danger">{{ error }}</p>
-                            {% endfor %}
-                            {{ form.code }}
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div>
-                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-           
-        </div>
+
+<!-- check_otp Start -->
+<div class="container-fluid">
+  <h2 class="section-title position-relative text-uppercase text-center mx-xl-5 mb-4">
+    <span class="bg-secondary pr-3">Check Otp</span>
+  </h2>
+
+  <div class="px-xl-5">
+    <div class="mb-5 contact-us" style="">
+      <div class="contact-form bg-light p-30">
+        <div id="success"></div>
+
+        {# The OTP verification form #}
+        <form method="post" id="otp-form">
+          {% csrf_token %}
+          <div class="control-group">
+            {# Display form validation errors for the phone field #}
+            {% for error in form.phone.errors %}
+              <p class="alert alert-danger">{{ error }}</p>
+            {% endfor %}
+
+            {# The OTP input field (from form) #}
+            {{ form.code }}
+            <p class="help-block text-danger"></p>
+          </div>
+
+          {# Timer display: shows remaining seconds (server expiration) #}
+          <div class="mt-3 mb-3">
+            {# expiration must be UNIX timestamp #}
+            <span id="otp-timer" data-expiration="{{ otp.expiration_date|date:'U' }}">
+              Remaining: <span id="countdown">60</span>s
+            </span>
+          </div>
+
+          <div>
+            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <!-- register End -->
+  </div>
+</div>
+<!-- check_otp End -->
+
+<script>
+  // Self-contained countdown using server-provided UNIX expiration
+  ;(function () {
+    // Read UNIX expiration time from data attribute
+    var expirationAttr = document.getElementById('otp-timer').getAttribute('data-expiration')
+    var expirationUnix = parseInt(expirationAttr, 10)
+
+    // Validate expiration
+    if (isNaN(expirationUnix) || expirationUnix <= 0) {
+      var countdownElNaN = document.getElementById('countdown')
+      if (countdownElNaN) countdownElNaN.textContent = '0'
+      return
+    }
+
+    // Convert to milliseconds for JS timer
+    var expirationMs = expirationUnix * 1000
+
+    // DOM references
+    var countdownEl = document.getElementById('countdown')
+    var timerEl = document.getElementById('otp-timer')
+    var submitBtn = document.getElementById('sendMessageButton')
+    var timerInterval
+
+    function updateCountdown() {
+      var now = Date.now()
+      var diffMs = expirationMs - now
+      var diffSec = Math.floor(diffMs / 1000)
+      if (diffSec < 0) diffSec = 0
+
+      // Update remaining seconds display
+      if (countdownEl) countdownEl.textContent = diffSec
+
+      // On expiry, disable the form and show a warning
+      if (diffSec <= 0) {
+        if (submitBtn) submitBtn.disabled = true
+
+        var warn = document.getElementById('otp-timer-message')
+        if (!warn) {
+          warn = document.createElement('div')
+          warn.id = 'otp-timer-message'
+          warn.className = 'alert alert-warning mt-2'
+          warn.textContent = 'OTP has expired. Please request a new one.'
+          timerEl.parentNode.insertBefore(warn, timerEl.nextSibling)
+        } else {
+          warn.style.display = 'block'
+        }
+
+        clearInterval(timerInterval)
+      } else {
+        // While time remains, ensure the button is enabled
+        if (submitBtn) submitBtn.disabled = false
+      }
+    }
+
+    // Initialize and start interval
+    updateCountdown()
+    timerInterval = setInterval(updateCountdown, 1000)
+  })()
+</script>
+
 {% endblock %}

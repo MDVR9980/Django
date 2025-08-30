@@ -1,37 +1,47 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 {% block main %}
-<!-- login Start -->
-    <div class="container-fluid">
-        <h2 class="section-title position-relative text-uppercase text-center mx-xl-5 mb-4"><span class="bg-secondary pr-3">User Login</span></h2>
-        <div class=" px-xl-5">
-            <div class=" mb-5 contact-us" style="">
-                <div class="contact-form bg-light p-30">
-                    <div id="success"></div>
-                    <form method="post">
-                        {% csrf_token %}
-                        <div class="control-group">
-                            {% comment %} {% for error in form.non_field_errors %}
-                                <p class="alert alert-danger">{{ error }}</p>
-                            {% endfor %} {% endcomment %}
-                            {% for error in form.phone.errors %}
-                                <p class="alert alert-danger">{{ error }}</p>
-                            {% endfor %}
-                            {{ form.phone }}
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="control-group">
-                            {{ form.password }}
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div>
-                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Login</button>
-                        </div>
-                    </form>
-                </div>
+  <!-- login Start -->
+  <div class="container-fluid">
+    <h2 class="section-title position-relative text-uppercase text-center mx-xl-5 mb-4"><span class="bg-secondary pr-3">User Login</span></h2>
+    <div class="px-xl-5">
+      <div class="mb-5 contact-us" style="">
+        <div class="contact-form bg-light p-30">
+          <div id="success"></div>
+          <form method="post">
+            {% csrf_token %}
+            <!-- Non-field errors (global) -->
+            {% if form.non_field_errors %}
+              {% for error in form.non_field_errors %}
+                <p class="alert alert-danger">{{ error }}</p>
+              {% endfor %}
+            {% endif %}
+
+            <!-- Identifier (email or phone) -->
+            <div class="control-group">
+              {{ form.identifier }}
+              {% for error in form.identifier.errors %}
+                <p class="alert alert-danger">{{ error }}</p>
+              {% endfor %}
+              <p class="help-block text-danger"></p>
             </div>
-           
+
+            <!-- Password -->
+            <div class="control-group">
+              {{ form.password }}
+              {% for error in form.password.errors %}
+                <p class="alert alert-danger">{{ error }}</p>
+              {% endfor %}
+              <p class="help-block text-danger"></p>
+            </div>
+
+            <div>
+              <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Login</button>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-    <!-- login End -->
+  </div>
+  <!-- login End -->
 {% endblock %}

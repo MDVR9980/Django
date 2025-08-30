@@ -140,4 +140,4 @@ AUTH_USER_MODEL = 'account.User'
 # ADMIN_SITE_BASE_URL = 'admin_site_base_url/'
 
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 
-                           'account.authentication.EmailAuthBackend']
+                           'account.authentication.EmailOrPhoneAuthBackend']

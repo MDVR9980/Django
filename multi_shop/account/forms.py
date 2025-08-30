@@ -41,7 +41,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('phone', 'password', 'is_active', 'is_admin')
+        fields = ('phone', 'email', 'password', 'is_active', 'is_admin')
 
     def clean_password(self):
         # Regardless of what the user provides, return the initial value.
@@ -57,21 +57,30 @@ class UserChangeForm(forms.ModelForm):
 class LoginForm(forms.Form):
     # phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control '}, validators=[validators.MaxLengthValidator(11)]))
     # phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control '}), validators=[start_with_zero])
-    phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control '}))
+    # phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control '}))
+    identifier = forms.CharField(
+        label='ایمیل یا شماره تلفن',
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'ایمیل یا شماره تلفن'}),
+        max_length=254    
+    )
     
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control '}))
+    password = forms.CharField(
+        label='پسورد',
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': "پسورد"})
+    )
 
-    # def clean_phone(self):
-    #     phone = self.cleaned_data.get('phone')
-    #     if(len(phone) > 11):
-    #         # raise ValidationError("تلفن وارد شده معتبر نیست!", code='invalid_phone')
-    #         raise ValidationError(
-    #             "Invalid value: %(value)s is invalid",
-    #             code='invalid',
-    #             params={'value': f'{phone}'}
-    #         )
+    def clean_identifier(self):
+        value = self.cleaned_data.get('identifier')
+        if '@' in value:
+            if value.count('@') !=1:
+                raise ValidationError("invalid email format.", code="invalid_email")
+        else:
+            if not value.isdigit():
+                raise ValidationError("Phone number must contain only digits.", code='invalid_phone')
+            if len(value) != 11:
+                raise ValidationError("Phone number must be exactly 11 digits.")
         
-    #     return phone
+        return value
 
     # def clean(self):
     #     cd = super().clean()
@@ -86,9 +95,8 @@ class LoginForm(forms.Form):
     #     return phone
 
 
-class RegisterForm(forms.Form):
-    phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), validators=[validators.MaxLengthValidator(11)])
-
+class OtpLoginForm(forms.Form):
+    phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'شماره تلفن'}), validators=[validators.MaxLengthValidator(11)])
 
 class CheckOtpForm(forms.Form):
     code = forms.CharField(
