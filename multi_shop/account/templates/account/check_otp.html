@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<!-- register Start -->
+    <div class="container-fluid">
+        <h2 class="section-title position-relative text-uppercase text-center mx-xl-5 mb-4"><span class="bg-secondary pr-3">Check Otp</span></h2>
+        <div class=" px-xl-5">
+            <div class=" mb-5 contact-us" style="">
+                <div class="contact-form bg-light p-30">
+                    <div id="success"></div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="control-group">
+                            {% comment %} {% for error in form.non_field_errors %}
+                                <p class="alert alert-danger">{{ error }}</p>
+                            {% endfor %} {% endcomment %}
+                            {% for error in form.phone.errors %}
+                                <p class="alert alert-danger">{{ error }}</p>
+                            {% endfor %}
+                            {{ form.code }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <!-- register End -->
+{% endblock %}
