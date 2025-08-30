@@ -14,8 +14,12 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">Sign in</button>
-                            <button class="dropdown-item" type="button">Sign up</button>
+                            {% if request.user.is_authenticated %}
+                                <a class="dropdown-item" href="{% url 'account:user_otp_login' %}" type="button">Profile</a>
+                                <a class="dropdown-item" href="{% url 'account:user_logout' %}" type="button">Logout</a>
+                            {% else %}
+                                <a class="dropdown-item" href="{% url 'account:user_otp_login' %}" type="button">Register/Login</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
