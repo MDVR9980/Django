@@ -50,14 +50,15 @@ class UserChangeForm(forms.ModelForm):
         return self.initial["password"]
     
 
-def start_with_zero(value):
-    if value[0] != '0':
-        raise forms.ValidationError("Phone should start with 0", code="invlid_phone")
+# def start_with_zero(value):
+#     if value[0] != '0':
+#         raise forms.ValidationError("Phone should start with 0", code="invlid_phone")
     
 class LoginForm(forms.Form):
     # phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control '}, validators=[validators.MaxLengthValidator(11)]))
-    # phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control '}))
-    phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control '}), validators=[start_with_zero])
+    # phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control '}), validators=[start_with_zero])
+    phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control '}))
+    
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control '}))
 
     # def clean_phone(self):
