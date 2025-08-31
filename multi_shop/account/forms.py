@@ -4,6 +4,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.core import validators
 from django.core.exceptions import ValidationError
+from account.models import Address
 
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
@@ -94,6 +95,10 @@ class LoginForm(forms.Form):
         
     #     return phone
 
+class AddressCreationForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        exclude = ('user',)
 
 class OtpLoginForm(forms.Form):
     phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'شماره تلفن'}), validators=[validators.MaxLengthValidator(11)])

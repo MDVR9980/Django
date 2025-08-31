@@ -26,11 +26,11 @@
             {% if product.size.all %}
               <strong class="text-dark mr-3">Sizes:</strong>
             {% endif %}
-            <form action="{% url 'cart:cart_add' %}" method="post">
+            <form action="{% url 'cart:cart_add' product.id %}" method="post">
               {% csrf_token %}
               {% for size in product.size.all %}
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" id="{{ size.title }}" name="size" />
+                  <input type="radio" class="custom-control-input" value="{{ size.title }}" id="{{ size.title }}" name="size" />
                   <label class="custom-control-label" for="{{ size.title }}">{{ size.title }}</label>
                 </div>
               {% endfor %}
@@ -41,7 +41,7 @@
             
               {% for color in product.color.all %}
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" id="{{ color.title }}" name="color" />
+                  <input type="radio" class="custom-control-input" value="{{ color.title }}" id="{{ color.title }}" name="color" />
                   <label class="custom-control-label" for="{{ color.title }}">{{ color.title }}</label>
                 </div>
               {% endfor %}
@@ -52,7 +52,7 @@
               <div class="input-group-btn">
                 <button type="button" class="btn btn-primary btn-minus"><i class="fa fa-minus"></i></button>
               </div>
-              <input type="text" class="form-control bg-secondary border-0 text-center" value="1" />
+              <input type="text" name="quantity" class="form-control bg-secondary border-0 text-center" value="1" />
               <div class="input-group-btn">
                 <button type="button" class="btn btn-primary btn-plus"><i class="fa fa-plus"></i></button>
               </div>
