@@ -91,10 +91,10 @@
         if (button.hasClass('btn-plus')) {
             var newVal = parseFloat(oldValue) + 1;
         } else {
-            if (oldValue > 0) {
+            if (oldValue > 1) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {
-                newVal = 0;
+                newVal = 1;
             }
         }
         button.parent().parent().find('input').val(newVal);
