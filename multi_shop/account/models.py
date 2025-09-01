@@ -74,32 +74,40 @@ class User(AbstractBaseUser):
         return self.is_admin
     
 class Otp(models.Model):
-    token = models.CharField(max_length=200, null=True)
-    phone = models.CharField(max_length=11)
-    code = models.SmallIntegerField()
-    expiration_date = models.DateTimeField()
+    token = models.CharField(max_length=200, null=True, verbose_name="توکن")
+    phone = models.CharField(max_length=11, verbose_name="شماره تلفن")
+    code = models.SmallIntegerField(verbose_name="کد تایید")
+    expiration_date = models.DateTimeField(verbose_name="تاریخ انقضاء کد تخفیف")
 
     def __str__(self):
         return self.phone
     
+    class Meta:
+        verbose_name = "لاگین otp"
+        verbose_name_plural = "لاگین otps"
+    
 
 class Address(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='addresses')
-    fullname = models.CharField(max_length=30)
-    email = models.EmailField(blank=True, null=True)
-    phone = models.CharField(max_length=12)
-    address = models.CharField(max_length=300)
-    zip_code = models.CharField(max_length=30)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='addresses', verbose_name="کاربر")
+    fullname = models.CharField(max_length=30, verbose_name="نام کامل")
+    email = models.EmailField(blank=True, null=True, verbose_name="ایمیل")
+    phone = models.CharField(max_length=12, verbose_name="شماره تلفن")
+    address = models.CharField(max_length=300, verbose_name="آدرس")
+    zip_code = models.CharField(max_length=30, verbose_name="کدپستی")
 
     def __str__(self):
         return self.user.phone
     
+    class Meta:
+        verbose_name = "آدرس"
+        verbose_name_plural = "آدرس ها"
+    
 class Message(models.Model):
-    name = models.CharField(max_length=30)
-    email = models.EmailField()
-    subject = models.CharField(max_length=100)
-    text = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=30, verbose_name="نام")
+    email = models.EmailField(verbose_name="ایمیل")
+    subject = models.CharField(max_length=100, verbose_name="موضوع")
+    text = models.TextField(verbose_name="پیغام")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
 
     def __str__(self):
         return self.name

@@ -66,6 +66,7 @@ class OtpLoginView(View):
         if form.is_valid():
             cd = form.cleaned_data
             randcode = randint(1000, 9999)
+            print(randcode)
             # SMS.verification(
             #     {
             #         'receptor': cd["phone"], # number phone reciver
