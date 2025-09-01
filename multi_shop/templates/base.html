@@ -1,4 +1,5 @@
 {% load static %}
+{% load render_partial %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +14,7 @@
 
 
     <!-- Navbar Start -->
-    {% include 'includes/navbar.html' %}
+    {% render_partial 'product:navbar' %}
     <!-- Navbar End -->
 
 
