@@ -8,8 +8,9 @@ from django.conf import settings
 import requests
 import json
 from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class CartDetailView(View):
+class CartDetailView(LoginRequiredMixin, View):
     def get(self, request):
         cart = Cart(request)
         return render(request, "cart/cart_detail.html", {'cart': cart})
@@ -30,13 +31,13 @@ class CartDeleteView(View):
         cart.delete(id)
         return redirect('cart:cart_detail')
     
-class OrderDetailView(View):
+class OrderDetailView(LoginRequiredMixin, View):
     def get(self, request, pk):
         order = get_object_or_404(Order, id=pk)
         return render(request, "cart/order_detail.html", {'order': order})
 
 
-class OrderCreationView(View):
+class OrderCreationView(LoginRequiredMixin, View):
     def get(self, request):
         cart = Cart(request)
         order = Order.objects.create(user=request.user, total_price=cart.total()) 
@@ -47,7 +48,7 @@ class OrderCreationView(View):
         cart.remove_cart()
         return redirect('cart:order_detail', order.id)
     
-class ApplyDiscountCodeView(View):
+class ApplyDiscountCodeView(LoginRequiredMixin, View):
     def post(self, request, pk):
         order = get_object_or_404(Order, id=pk)
         code = request.POST.get('discount_code')

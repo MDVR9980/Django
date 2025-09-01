@@ -32,6 +32,9 @@ class UserLogin(View):
 
             if user is not None:
                 login(request, user)
+                next_page = request.GET.get('next')
+                if next_page:
+                    return redirect(next_page)
                 return redirect("/")
             else:
                 # Do not reveal too much; generic error
@@ -65,7 +68,6 @@ class OtpLoginView(View):
                 token=token,
                 expiration_date=timezone.now() + timedelta(minutes=1) # expire time is 1 min   
             )
-            print(randcode)
             return redirect(reverse('account:check_otp') + f'?token={token}')
 
         else:
