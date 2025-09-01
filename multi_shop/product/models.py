@@ -31,6 +31,10 @@ class Product(models.Model):
     size = models.ManyToManyField(Size, related_name='products', blank=True, null=True)
     color = models.ManyToManyField(Color, related_name='products')
 
+    @property
+    def discounted_price(self):
+        return ((100 - self.discount) * self.price) // 100
+
     # class Meta:
 
     def __str__(self):

@@ -1,7 +1,4 @@
 from django.db import models
 
-class Product(models.model):
+class Product(models.Model):
     name = models.CharField(max_length=12)
-
-class Item(models.Model):
-    product = models.ForeignKey(Product, )

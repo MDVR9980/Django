@@ -2,14 +2,16 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from account.forms import LoginForm, OtpLoginForm, CheckOtpForm, AddressCreationForm
+from django.views.generic import FormView
+from account.forms import LoginForm, OtpLoginForm, CheckOtpForm, AddressCreationForm, MessageContactUsForm
 # import ghasedakpack
 from random import randint
 # from django.utils.crypto import get_random_string
-from .models import User, Otp
+from .models import User, Otp, Message
 from uuid import uuid4
 from datetime import timedelta
 from django.utils import timezone
+from django.urls import reverse_lazy
 
 # def user_login(request):
 #     return render(request, "account/login.html", {})
@@ -41,7 +43,19 @@ class UserLogin(View):
                 form.add_error(None, "Invalid username or password.")
         # If form is invalid, it will render with errors
         return render(request, "account/login.html", {'form': form})
+
+
+class ContactUsView(FormView):
+    template_name = "account/contactus.html"
+    form_class = MessageContactUsForm
+    success_url = reverse_lazy("home:home")
+
+    def form_valid(self, form):
+        form_data = form.cleaned_data
+        Message.objects.create(**form_data)
+        return super().form_valid(form)
     
+
 class OtpLoginView(View):
     def get(self, request):
         form = OtpLoginForm()

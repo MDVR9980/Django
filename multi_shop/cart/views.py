@@ -10,7 +10,7 @@ import json
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class CartDetailView(LoginRequiredMixin, View):
+class CartDetailView(View):
     def get(self, request):
         cart = Cart(request)
         return render(request, "cart/cart_detail.html", {'cart': cart})

@@ -4,7 +4,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.core import validators
 from django.core.exceptions import ValidationError
-from account.models import Address
+from account.models import Address, Message
 
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
@@ -110,3 +110,26 @@ class CheckOtpForm(forms.Form):
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         validators=[validators.MaxLengthValidator(4)]
     )
+
+class MessageContactUsForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ('name', 'email', 'subject', 'text')
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'نام',
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'ایمیل',
+            }),
+            'subject': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'موضوع',
+            }),
+            'text': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'پیام شما برای ما',
+            }),
+        }
