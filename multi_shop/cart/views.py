@@ -3,6 +3,11 @@ from django.views import View
 from product.models import Product
 from cart.cart_module import Cart
 from cart.models import Order, OrderItem, DiscountCode
+from account.models import Address
+from django.conf import settings
+import requests
+import json
+from django.http import HttpResponse
 
 class CartDetailView(View):
     def get(self, request):
@@ -55,3 +60,73 @@ class ApplyDiscountCodeView(View):
         discount_code.quantity -= 1
         discount_code.save()
         return redirect('cart:order_detail', order.id)
+
+
+# #? sandbox merchant 
+# if settings.SANDBOX:
+#     sandbox = 'sandbox'
+# else:
+#     sandbox = 'www'
+
+
+# ZP_API_REQUEST = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
+# ZP_API_VERIFY = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
+# ZP_API_STARTPAY = f"https://{sandbox}.zarinpal.com/pg/StartPay/"
+ZP_API_REQUEST = "https://api.zarinpal.com/pg/v4/payment/request.json"
+ZP_API_VERIFY = "https://api.zarinpal.com/pg/v4/payment/verify.json"
+ZP_API_STARTPAY = "https://www.zarinpal.com/pg/StartPay/{authority}"
+
+# amount = 1000  # Rial / Required
+description = "توضیحات مربوط به تراکنش را در این قسمت وارد کنید"  # Required
+# phone = 'YOUR_PHONE_NUMBER'  # Optional
+# Important: need to edit for realy server.
+CallbackURL = 'http://127.0.0.1:8000/cart/verify/'
+
+
+class SendRequestView(View):
+    def post(self, request, pk):
+        order = get_object_or_404(Order, id=pk, user=request.user)
+        address = get_object_or_404(Address, id=request.POST.get('address'))
+        order.address = f"{address.address} - {address.phone}- {address.email}"
+        order.save()
+        req_data = {
+            "merchant_id": settings.MERCHANT,
+            "amount": order.price,
+            "callback_url": CallbackURL,
+            "description": description,
+            # "phone": request.user.phone,
+            "metadata": {"mobile": request.user.phone},
+        }
+        req_header = {
+            "accept": "applications/json",
+            "content-type": "applications/json",
+        }
+        req = request.post(url=ZP_API_REQUEST, data=json.dumps(
+            req_data), headers=req_header)
+        authority = req.json()['data']['authority']
+        if len(req.json()['errors']) == 0:
+            return redirect(ZP_API_STARTPAY.format(authority=authority))
+        else:
+            e_code = req.json()['errors']['code']
+            e_message = req.json()['errors']['message']
+            return HttpResponse(f"Error code: {e_code}, Error Message: {e_message}")   
+
+
+        # data = json.dumps(data)
+        # # set content length by data
+        # headers = {'content-type': 'application/json', 'content-length': str(len(data)) }
+        # try:
+        #     response = requests.post(ZP_API_REQUEST, data=data,headers=headers, timeout=10)
+
+        #     if response.status_code == 200:
+        #         response = response.json()
+        #         if response['Status'] == 100:
+        #             return {'status': True, 'url': ZP_API_STARTPAY + str(response['Authority']), 'authority': response['Authority']}
+        #         else:
+        #             return {'status': False, 'code': str(response['Status'])}
+        #     return response
+        
+        # except requests.exceptions.Timeout:
+        #     return {'status': False, 'code': 'timeout'}
+        # except requests.exceptions.ConnectionError:
+        #     return {'status': False, 'code': 'connection error'}
