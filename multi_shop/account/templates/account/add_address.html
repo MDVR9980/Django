@@ -9,28 +9,32 @@
             <div class="">
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">آدرس صورتحساب</span></h5>
                 <div class="bg-light p-30 mb-5">
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>نام کامل</label>
-                            {{ form.fullname|attr:'class:form-control' }}
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>نام کامل</label>
+                                {{ form.fullname|attr:'class:form-control' }}
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>شماره تلفن</label>
+                                {{ form.phone|attr:'class:form-control' }}
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>ایمیل</label>
+                                {{ form.email|attr:'class:form-control' }}
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>آدرس</label>
+                                {{ form.address|attr:'class:form-control' }}
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>کدپستی</label>
+                                {{ form.zip_code|attr:'class:form-control' }}
+                            </div>
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label>شماره تلفن</label>
-                            {{ form.phone|attr:'class:form-control' }}
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>ایمیل</label>
-                            {{ form.email|attr:'class:form-control' }}
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>آدرس</label>
-                            {{ form.address|attr:'class:form-control' }}
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>کدپستی</label>
-                            {{ form.zip_code|attr:'class:form-control' }}
-                        </div>
-                    </div>
+                        <button type="submit" class="form-control btn btn-primary">Send</button>
+                    </form>
                 </div>
             </div>
            

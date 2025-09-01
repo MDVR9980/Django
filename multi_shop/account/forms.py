@@ -96,9 +96,10 @@ class LoginForm(forms.Form):
     #     return phone
 
 class AddressCreationForm(forms.ModelForm):
+    user = forms.IntegerField(required=False)
     class Meta:
         model = Address
-        exclude = ('user',)
+        fields = '__all__'
 
 class OtpLoginForm(forms.Form):
     phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'شماره تلفن'}), validators=[validators.MaxLengthValidator(11)])
