@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from account.forms import LoginForm, OtpLoginForm, CheckOtpForm, AddressCreationForm, MessageContactUsForm
 # import ghasedakpack
 from random import randint
@@ -187,3 +187,12 @@ class AddAddressView(View):
 def user_logout(request):
     logout(request)
     return redirect("/")
+
+
+class TopbarPartialView(TemplateView):
+    template_name = 'includes/topbar.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user  
+        return context
