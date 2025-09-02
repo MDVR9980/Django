@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'widget_tweaks',
     'django_render_partial',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
